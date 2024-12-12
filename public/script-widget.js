@@ -11,7 +11,7 @@ const chatInput = document.getElementById('chatInput');
 const sendButton = document.querySelector('.chatbot-send');
 
 
-const baseUrl = "http://localhost:8788";
+const baseUrl = "http://vorbarie.ro";
 const helloMessageContent = "Salut! Eu sunt Nicobot și mi-ar plăcea să știu cum mai ești. Cum ți-a fost ziua?";
 let isOpen = false;
 let messages = [
