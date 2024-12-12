@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "npx wrangler pages dev public --local --port 8789"
+  },
+  "devDependencies": {
+    "wrangler": "^3.78.12"
+  }
+}
