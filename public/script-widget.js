@@ -18,14 +18,14 @@ let messages = [
 
 	{
 		id: 1,
-		content: helloMessageContent,
-		sender: 'bot',
-		options: []
+		content: 'Nicobot este un asistent digital antrenat pentru a-ți oferi sfaturi validate științific pentru îmbunătățirea stării de bine.',
+		sender: 'system'
 	},
 	{
 		id: 2,
-		content: 'Nicobot este un asistent virtual care are capacitatea de a-ți oferi sfaturi validate științific pentru îmbunătățirea stării de bine.',
-		sender: 'system'
+		content: helloMessageContent,
+		sender: 'bot',
+		options: []
 	},
 ];
 let chatId = null;

@@ -14,6 +14,7 @@
 	--text-primary: #262626;
 	--text-light: #FFFFFF;
 	--text-muted: #8E8E8E;
+	--text-muted-light: #676767;
 
 	/* message colors */
 	--bot-message-bg: #EFEFEF;
@@ -39,6 +40,18 @@
 	--border-radius-sm: 0.25rem;
 	--border-radius-md: 0.75rem;
 	--border-radius-lg: 1rem;
+
+	/* typography */
+	--font-size-xxs: 0.625rem;
+	/* 10px */
+	--font-size-xs: 0.75rem;
+	/* 12px */
+	--font-size-sm: 0.875rem;
+	/* 14px */
+	--font-size-base: 1rem;
+	/* 16px */
+	--font-size-lg: 1.125rem;
+	/* 18px */
 }
 
 .reset-this-root {
@@ -66,12 +79,13 @@ textarea:focus {
 	max-width: 400px;
 	border-radius: var(--border-radius-lg);
 	transition: transform 0.3s ease-in-out;
+	font-size: var(--font-size-sm);
 }
 
 .minimize-button {
 	background: none;
 	border: none;
-	color: var(--text-light);
+	color: var(--primary-color);
 	font-size: 1.5rem;
 	cursor: pointer;
 	padding: 0;
@@ -88,6 +102,7 @@ textarea:focus {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	font-size: var(--font-size-base);
 }
 
 .chatbot-header {
@@ -97,6 +112,7 @@ textarea:focus {
 	justify-content: space-between;
 	align-items: center;
 	/* background-color: var(--accent-color); */
+	font-size: var(--font-size-base);
 }
 
 .chatbot-messages {
@@ -106,7 +122,6 @@ textarea:focus {
 	min-height: 0;
 	width: 100%;
 	box-sizing: border-box;
-	font-size: 0.9em;
 	color: var(--text-primary);
 	border-radius: var(--border-radius-sm);
 }
@@ -131,7 +146,6 @@ textarea:focus {
 	padding: var(--spacing-sm);
 	resize: none;
 	font-family: inherit;
-	font-size: 0.9rem;
 	background-color: var(--bg-secondary);
 	border-radius: var(--border-radius-sm);
 }
@@ -216,20 +230,20 @@ textarea:focus {
 
 .message-system {
 	justify-content: center;
-	margin-bottom: var(--spacing-md);
+	padding-bottom: var(--spacing-md);
 	text-align: center;
+	font-size: var(--font-size-xs);
 }
 
 .message-system span {
 	padding: 0;
 	margin: 0;
-	font-size: 0.95em;
-	color: var(--text-primary);
+	color: var(--text-muted-light);
 }
 
 .message-system .message-description {
 	color: #3a3535;
-	font-size: 0.85em;
+	font-size: var(--font-size-xs);
 	max-width: 90%;
 	text-align: center;
 	font-style: italic;
@@ -275,7 +289,6 @@ textarea:focus {
 	width: 12px;
 	text-align: left;
 	animation: dots 1.5s steps(5, end) infinite;
-	font-size: 14px;
 	line-height: 1;
 	color: var(--text-muted);
 }
@@ -305,16 +318,15 @@ textarea:focus {
 
 @media (min-width: 768px) {
 	.chatbot-container {
-		bottom: 20px;
-		right: 20px;
-		width: 400px;
+		max-width: 60vh;
+		font-size: var(--font-size-xs);
 	}
 }
 
 @media (max-width: 600px) {
 	.chatbot-container {
-		max-width: 35vh;
-		font-size: 0.8em;
+		max-width: 60vh;
+		font-size: var(--font-size-xxs);
 	}
 
 	.chatbot {
