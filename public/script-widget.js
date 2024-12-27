@@ -17,7 +17,7 @@ const durationMessage = {
 	content: "Uneori răspunsul unui mesaj poate sa dureze chiar și 5-10 secunde. Mulțumim pentru răbdare.",
 	sender: 'system',
 }
-// let isOpen = true;
+let isOpen = false;
 let messages = [
 
 	{
