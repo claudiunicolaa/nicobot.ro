@@ -13,7 +13,11 @@ const sendButton = document.querySelector('.chatbot-send');
 
 const baseUrl = "https://vorbarie.ro";
 const helloMessageContent = "Salut! Eu sunt Nicobot și mi-ar plăcea să știu cum mai ești. Cum ți-a fost ziua?";
-let isOpen = false;
+const durationMessage = {
+	content: "Uneori răspunsul unui mesaj poate sa dureze chiar și 5-10 secunde. Mulțumim pentru răbdare.",
+	sender: 'system',
+}
+// let isOpen = true;
 let messages = [
 
 	{
@@ -29,6 +33,7 @@ let messages = [
 	},
 ];
 let chatId = null;
+let isFirstUserMessage = true;
 
 window.onload = setInitialState;
 // Initial render
@@ -213,6 +218,11 @@ async function handleSend(messageContent, messageId) {
 		sender: 'user',
 	};
 	messages.push(newUserMessage);
+
+	if (isFirstUserMessage) {
+		messages.push(durationMessage);
+		isFirstUserMessage = false;
+	}
 	renderMessages();
 	chatInput.value = '';
 
