@@ -12,7 +12,7 @@ const sendButton = document.querySelector('.chatbot-send');
 
 
 const baseUrl = "https://vorbarie.ro";
-const helloMessageContent = "Salut! Eu sunt Nicobot și mi-ar plăcea să știu cum mai ești. Cum ți-a fost ziua?";
+const helloMessageContent = "Salut! Eu sunt Nicobot și mi-ar plăcea să știu cum mai ești. Cum ți-a fost ziua? Te invit să îmi împărtășești orice gânduri sau sentimente care ți-ar plăcea să le discutăm. Sunt aici pentru a te asculta și a te sprijini în orice mod posibil.";
 const durationMessage = {
 	content: "Uneori răspunsul unui mesaj poate sa dureze chiar și 5-10 secunde. Mulțumim pentru răbdare.",
 	sender: 'system',
