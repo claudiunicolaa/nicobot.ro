@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Nicobot - Asistentul tău Digital</title>
+	<title>Integrare Chatbot pentru Cabinetul sau Clinica Dvs. | Nicobot</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 	<style>
 		:root {
@@ -14,7 +14,6 @@
 			--light-gray: #F8F9FA;
 		}
 
-		/* Custom color classes */
 		.bg-primary {
 			background-color: var(--primary-blue);
 		}
@@ -27,12 +26,10 @@
 			color: var(--primary-blue);
 		}
 
-		/* Gradient background */
 		.bg-gradient-primary {
 			background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
 		}
 
-		/* Hover states */
 		.hover-transition {
 			transition: all 0.3s ease;
 		}
@@ -41,103 +38,65 @@
 			transform: translateY(-2px);
 		}
 	</style>
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16813618239">
-	</script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'AW-16813618239');
-	</script>
-	<!-- Chatbot Widget -->
-	<link rel="stylesheet" href="../styles-widget.css">
-	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body class="bg-white">
-	<!-- Hero Section -->
+	<!-- hero section -->
 	<section class="bg-gradient-primary text-white py-32 text-center">
-		<div class="container mx-auto px-6">
-			<h1 class="text-5xl font-bold mb-6">
-				Descoperă Nicobot
-			</h1>
+		<div class="container mx-auto px-2">
+			<h1 class="text-5xl font-bold mb-6">Nicobot - AI Chatbot</h1>
 			<p class="text-xl mb-6 max-w-2xl mx-auto">
-				Asistentul digital care te ajută să te concentrezi pe ceea ce contează cu adevărat: relația cu pacienții tăi
+				Folosind tehnologia AI, Nicobot își propune să ajute cabinetele și cliniciile de psihoterapie să își
+				extindă portofoliul de servicii oferite
 			</p>
-			<button
-				class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
-				<a id="startChatButton">Începe o conversație gratuită</a>
-			</button>
 		</div>
 	</section>
 
-	<!-- Mission Section -->
+	<!-- how it works section -->
 	<section class="py-20">
 		<div class="container mx-auto px-6 text-center">
-			<h2 class="text-3xl font-bold mb-8">Misiunea Noastră</h2>
-			<p class="text-gray-600 text-xl max-w-2xl mx-auto">
-				Nicobot facilitează primul contact cu potențialii pacienți, oferindu-ți timpul necesar să te dedici sesiunilor
-				de terapie și dezvoltării profesionale.
-			</p>
-		</div>
-	</section>
-
-	<!-- Features Grid -->
-	<section class="py-20 bg-gray-50">
-		<div class="container mx-auto px-6">
-			<div class="grid md:grid-cols-3 gap-8">
-				<!-- Support Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-primary mb-4">Sprijin Continuu</h3>
-					<ul class="space-y-4 text-gray-600">
-						<li>• Preluarea conversațiilor inițiale cu empatie</li>
-						<li>• Răspunsuri prompte la întrebările frecvente</li>
-						<li>• Programări gestionate cu atenție</li>
-					</ul>
-				</div>
-
-				<!-- Integration Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm">
-					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Integrare Naturală</h3>
-					<ul class="space-y-4 text-gray-600">
-						<li>• Adaptare la stilul tău de comunicare</li>
-						<li>• Conectare simplă cu site-ul existent</li>
-						<li>• Sincronizare cu agenda ta</li>
-					</ul>
-				</div>
-
-				<!-- Care Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm">
-					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Grijă față de Detalii</h3>
-					<ul class="space-y-4 text-gray-600">
-						<li>• Comunicare caldă și profesionistă</li>
-						<li>• Protecția datelor conform GDPR</li>
-						<li>• Actualizări regulate bazate pe feedback</li>
-					</ul>
-				</div>
+			<!-- <h2 class="text-3xl font-bold mb-8">Cum funcționează</h2> -->
+			<div class="mx-auto text-left text-gray-700 bg-gray-50 rounded-lg shadow-sm p-8 max-w-3xl">
+				<p class="mb-4 text-lg">
+					<strong>Nicobot este un chatbot</strong> ce poate prelua conversații cu vizitatorii site-ului sau paginii de
+					social media.
+				</p>
+				<p class="mb-4 text-lg">
+					<strong>Construit pe baza unui model de inteligență artificială</strong> (asemănător cu ChatGPT) și poate
+					purta
+					conversații în limbaj natural, prietenos și fără judecată.
+				</p>
+				<p class="mb-0 text-lg">
+					<strong>Dezvoltat alături de o echipă de psihologi acreditați</strong> care pe parcursul dezvoltării au oferit
+					feedback și
+					sugestii pentru a îmbunătăți experiența și acuratețea răspunsurilor oferite.
+				</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- Benefits Section -->
-	<section class="py-20 bg-white">
+	<section class="py-20 bg-gray-50">
 		<div class="container mx-auto px-6">
-			<h2 class="text-3xl font-bold text-center mb-12">Beneficii pentru cabinet / clinică</h2>
-			<div class="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto">
-				<div class="space-y-4">
-					<h3 class="text-xl font-semibold text-indigo-600">Conexiuni Autentice</h3>
-					<p class="text-gray-600">Nicobot inițiază conversații naturale și empatice cu potențialii pacienți oferind
-						suport emoțional.</p>
+			<h2 class="text-3xl font-bold mb-8 text-center mb-12">Cum funcționează</h2>
+			<div class="grid md:grid-cols-3 gap-8">
+				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
+					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Discuție de cunoaștere</h3>
+					<p class="text-gray-600">Avem o discuție de cunoaștere în care înțelegem nevoile dumneavoastră și vă prezentăm
+						cum putem ajuta.
+					</p>
 				</div>
-				<div class="space-y-4">
-					<h3 class="text-xl font-semibold text-indigo-600">Mai mulți clienți</h3>
-					<p class="text-gray-600">Nicobot se ocupă de transforma vizitatorii site-ului tău în clienți.</p>
+
+				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
+					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Stabilim un plan de implementare</h3>
+					<p class="text-gray-600">În urma discuției de cunoaștere stabilim un plan de implementare care să conțină
+						nevoile dumneavoastră și soluțiile pe care le putem oferi.
+					</p>
 				</div>
-				<div class="space-y-4">
-					<h3 class="text-xl font-semibold text-indigo-600">Flexibilitate și Control</h3>
-					<p class="text-gray-600">Tu stabilești regulile de programare și comunicare, iar Nicobot le respectă întocmai.
+
+				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
+					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Monitorizăm și îmbunătățim</h3>
+					<p class="text-gray-600">Colaborarea nu se încheie odată cu implementarea. Monitorizăm și îmbunătățim
+						performanța implementării împreună cu dumneavoastră.
 					</p>
 				</div>
 			</div>
@@ -145,53 +104,43 @@
 	</section>
 
 	<!-- Call to Action -->
-	<section class="py-20 bg-gray-50">
+	<section class="py-20">
 		<div class="container mx-auto px-6 text-center">
-			<h2 class="text-3xl font-bold mb-8">Pregătit(ă) să începi călătoria spre o practică mai eficientă?</h2>
+			<h2 class="text-3xl font-bold mb-8">Hai să ne întâlnim online</h2>
 			<div class="space-y-4">
 				<button
-					class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-secondary transition duration-300 hover-transition">
-					<a href="https://calendly.com/claudiu-nicolaa/25min" target="_blank">Programează o discuție pentru a afla mai
-						multe</a>
+					class="bg-primary text-white px-8 py-3 rounded font-semibold hover:bg-secondary transition duration-300 hover-transition">
+					<a href="https://calendly.com/claudiu-nicolaa/25min" target="_blank">Programează o discuție de 30 de
+						minute</a>
 				</button>
 			</div>
 	</section>
 
-	<!-- Footer -->
+	<!-- call to action section -->
+	<section class="py-20 bg-white bg-gray-50">
+		<div class="container mx-auto px-6 text-center">
+			<h2 class="text-3xl font-bold mb-8">Parteneri</h2>
+			<div class="flex justify-center items-center">
+				<div class="w-28">
+					<a href="https://app.calmly.ro/camy?utm_source=nicobotro" target="_blank">
+						<img src="https://calmly.blog/wp-content/uploads/2024/08/red-1.png" alt="Calmly" class="w-full">
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- footer -->
 	<footer class="bg-gray-900 text-white py-8">
 		<div class="container mx-auto px-6 text-center">
-			<p class="mb-4">© 2024 Nicobot. Toate drepturile rezervate.</p>
+			<p class="mb-4">© 2025 Nicobot. Toate drepturile rezervate.</p>
 			<div class="space-x-6">
 				<a href="https://nicobot.ro/privacy" class="hover:text-indigo-400" target="_blank">Politica de
 					confidențialitate</a>
-				<!-- <a href="https://nicobot.ro/terms-and-conditions" class="hover:text-indigo-400" target="_blank">Termeni și
-								condiții</a> -->
 				<a href="https://nicobot.ro/contact" class="hover:text-indigo-400" target="_blank">Contact</a>
 			</div>
 		</div>
 	</footer>
-
-	<!-- Chatbot Widget -->
-	<!-- TODO: use JS to inject the widget HTML -->
-	<div class="reset-this-root chatbot-container">
-		<div class="chatbot" id="chatbot" style="display: none;">
-			<div class="chatbot-header">
-				<button id="minimizeButton" class="minimize-button">—</button>
-			</div>
-			<div class="chatbot-messages" id="chatMessages"></div>
-			<form id="chatForm" class="chatbot-form">
-				<div class="chatbot-input-container">
-					<textarea id="chatInput" class="chatbot-input" placeholder="A fost o zi ..."></textarea>
-					<button id="sendButton" type="submit" class="chatbot-send">
-						<img src="send.svg" alt="ID" width="24" height="24">
-					</button>
-				</div>
-			</form>
-		</div>
-		<button id="chatToggle" class="chat-toggle closed"></button>
-	</div>
 </body>
-<!-- Load Chat Widget script -->
-<script src="../script-widget.js"></script>
 
 </html>
