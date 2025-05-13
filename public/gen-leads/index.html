@@ -6,41 +6,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Integrare Chatbot pentru Cabinetul sau Clinica Dvs. | Nicobot</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-	<style>
-		:root {
-			--primary-blue: #4361EE;
-			--secondary-blue: #3F37C9;
-			--dark-gray: #212529;
-			--light-gray: #F8F9FA;
-		}
-
-		.bg-primary {
-			background-color: var(--primary-blue);
-		}
-
-		.bg-secondary {
-			background-color: var(--secondary-blue);
-		}
-
-		.text-primary {
-			color: var(--primary-blue);
-		}
-
-		.bg-gradient-primary {
-			background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-		}
-
-		.hover-transition {
-			transition: all 0.3s ease;
-		}
-
-		.hover-transition:hover {
-			transform: translateY(-2px);
-		}
-	</style>
+	<link href="/styles/main.css" rel="stylesheet">
 </head>
 
 <body class="bg-white">
+	<!-- navigation component -->
+	<div id="nav-placeholder"></div>
+	<script>
+		// load navigation component
+		fetch('/components/nav.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('nav-placeholder').innerHTML = data;
+
+				// initialize mobile menu functionality
+				const menuButton = document.querySelector('button.md\\:hidden');
+				const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+
+				menuButton.addEventListener('click', () => {
+					mobileMenu.classList.toggle('hidden');
+				});
+			});
+	</script>
+
 	<!-- hero section -->
 	<section class="bg-gradient-primary text-white py-32 text-center">
 		<div class="container mx-auto px-2">
@@ -71,6 +59,12 @@
 					sugestii pentru a îmbunătăți experiența și acuratețea răspunsurilor oferite.
 				</p>
 			</div>
+		</div>
+		<div class="flex justify-center mt-8">
+			<button
+				class="bg-primary text-white px-8 py-3 rounded font-semibold hover:bg-secondary transition duration-300 hover-transition">
+				<a href="https://nicobot.ro/chat" target="_blank">Încearcă-l chiar acum</a>
+			</button>
 		</div>
 	</section>
 
@@ -121,7 +115,7 @@
 			<h2 class="text-3xl font-bold mb-8">Parteneri</h2>
 			<div class="flex justify-center items-center">
 				<div class="w-28">
-					<a href="https://app.calmly.ro/camy?utm_source=nicobotro" target="_blank">
+					<a href="https://calmly.ro" target="_blank">
 						<img src="https://calmly.blog/wp-content/uploads/2024/08/red-1.png" alt="Calmly" class="w-full">
 					</a>
 				</div>

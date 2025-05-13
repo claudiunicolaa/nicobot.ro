@@ -1,0 +1,33 @@
+:root {
+	--primary-blue: #4361EE;
+	--secondary-blue: #3F37C9;
+	--dark-gray: #212529;
+	--light-gray: #F8F9FA;
+}
+
+/* custom color classes */
+.bg-primary {
+	background-color: var(--primary-blue);
+}
+
+.bg-secondary {
+	background-color: var(--secondary-blue);
+}
+
+.text-primary {
+	color: var(--primary-blue);
+}
+
+/* gradient background */
+.bg-gradient-primary {
+	background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+}
+
+/* hover states */
+.hover-transition {
+	transition: all 0.3s ease;
+}
+
+.hover-transition:hover {
+	transform: translateY(-2px);
+}

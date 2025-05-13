@@ -6,41 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Nicobot - Asistentul tău Digital pentru Terapie</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-	<style>
-		:root {
-			--primary-blue: #4361EE;
-			--secondary-blue: #3F37C9;
-			--dark-gray: #212529;
-			--light-gray: #F8F9FA;
-		}
-
-		/* Custom color classes */
-		.bg-primary {
-			background-color: var(--primary-blue);
-		}
-
-		.bg-secondary {
-			background-color: var(--secondary-blue);
-		}
-
-		.text-primary {
-			color: var(--primary-blue);
-		}
-
-		/* Gradient background */
-		.bg-gradient-primary {
-			background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-		}
-
-		/* Hover states */
-		.hover-transition {
-			transition: all 0.3s ease;
-		}
-
-		.hover-transition:hover {
-			transform: translateY(-2px);
-		}
-	</style>
+	<link href="/styles/main.css" rel="stylesheet">
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16813618239">
 	</script>
@@ -57,6 +23,25 @@
 </head>
 
 <body class="bg-white">
+	<!-- navigation component -->
+	<div id="nav-placeholder"></div>
+	<script>
+		// load navigation component
+		fetch('/components/nav.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('nav-placeholder').innerHTML = data;
+
+				// initialize mobile menu functionality
+				const menuButton = document.querySelector('button.md\\:hidden');
+				const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+
+				menuButton.addEventListener('click', () => {
+					mobileMenu.classList.toggle('hidden');
+				});
+			});
+	</script>
+
 	<!-- Hero Section -->
 	<section class="bg-gradient-primary text-white py-32 text-center">
 		<div class="container mx-auto px-6">
@@ -164,7 +149,6 @@
 			</div>
 		</div>
 	</footer>
-
 </body>
 
 </html>
