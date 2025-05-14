@@ -4,11 +4,31 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="/n.ico">
 	<title>Contact - Nicobot</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-white">
+	<!-- navigation component -->
+	<div id="nav-placeholder"></div>
+	<script>
+		// load navigation component
+		fetch('/components/nav.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('nav-placeholder').innerHTML = data;
+
+				// initialize mobile menu functionality
+				const menuButton = document.querySelector('button.md\\:hidden');
+				const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+
+				menuButton.addEventListener('click', () => {
+					mobileMenu.classList.toggle('hidden');
+				});
+			});
+	</script>
+
 	<!-- header section -->
 	<header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
 		<div class="container mx-auto px-6 py-12">
