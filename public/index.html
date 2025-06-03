@@ -2,22 +2,18 @@
 <html lang="ro">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="/n.ico">
-	<title>Nicobot - Asistentul tău Digital pentru Terapie</title>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-	<link href="/styles/main.css" rel="stylesheet">
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16813618239">
-	</script>
+	<!-- load shared head component -->
+	<div id="head-placeholder"></div>
 	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'AW-16813618239');
+		// load head component
+		fetch('/components/head.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('head-placeholder').innerHTML = data;
+			});
 	</script>
+	<!-- page-specific head content -->
+	<title>Nicobot - Asistentul tău Digital pentru Terapie</title>
 	<!-- Chatbot Widget -->
 	<link rel="stylesheet" href="styles-widget.css">
 	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
