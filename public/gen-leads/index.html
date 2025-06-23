@@ -86,21 +86,21 @@
 			<h2 class="text-3xl font-bold mb-8 text-center mb-12">Cum funcționează</h2>
 			<div class="grid md:grid-cols-3 gap-8">
 				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Discuție de cunoaștere</h3>
+					<h3 class="text-xl font-semibold text-primary mb-4">Discuție de cunoaștere</h3>
 					<p class="text-gray-600">Avem o discuție de cunoaștere în care înțelegem nevoile dumneavoastră și vă prezentăm
 						cum putem ajuta.
 					</p>
 				</div>
 
 				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Stabilim un plan de implementare</h3>
+					<h3 class="text-xl font-semibold text-primary mb-4">Stabilim un plan de implementare</h3>
 					<p class="text-gray-600">În urma discuției de cunoaștere stabilim un plan de implementare care să conțină
 						nevoile dumneavoastră și soluțiile pe care le putem oferi.
 					</p>
 				</div>
 
 				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-indigo-600 mb-4">Monitorizăm și îmbunătățim</h3>
+					<h3 class="text-xl font-semibold text-primary mb-4">Monitorizăm și îmbunătățim</h3>
 					<p class="text-gray-600">Colaborarea nu se încheie odată cu implementarea. Monitorizăm și îmbunătățim
 						performanța implementării împreună cu dumneavoastră.
 					</p>
@@ -110,34 +110,14 @@
 	</section>
 
 	<!-- Press Appearances Section -->
-	<section class="py-20 bg-white">
-		<div class="container mx-auto px-6">
-			<h2 class="text-3xl font-bold text-center mb-12">Apariții în presă</h2>
-			<div class="max-w-3xl mx-auto">
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<div class="flex items-center mb-4">
-						<img src="https://www.zf.ro/favicon.ico" alt="Ziarul Financiar Logo" class="w-8 h-8 mr-3">
-						<h3 class="text-xl font-semibold text-indigo-600">Ziarul Financiar</h3>
-					</div>
-					<p class="text-gray-600 mb-4">Partenerul nostru, Calmly, a povestit într-un interviu pentru Ziarul
-						Financiar despre integrarea Nicobot în platforma lor (sub numele de Camy).</p>
-					<div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-						<h4 class="font-semibold text-lg mb-2">Start-up Pitch: Calmly, platformă de matchmaking pentru psihoterapie
-						</h4>
-						<p class="text-gray-600 text-sm mb-4">Anul acesta am intermediat peste 1.000 de şedinţe de terapie. Pregătim
-							scalarea şi o nouă rundă de finanţare</p>
-						<a href="https://www.zf.ro/zf-it-generation/zf-it-generation-start-up-pitch-radu-bendic-cristina-georgescu-22806068"
-							target="_blank" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
-							Citește articolul complet pe Ziarul Financiar
-							<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-							</svg>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<div id="press-placeholder"></div>
+	<script>
+		fetch('/components/press.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('press-placeholder').innerHTML = data;
+			});
+	</script>
 
 	<!-- Call to Action -->
 	<section class="py-20 bg-gray-50">
@@ -171,9 +151,9 @@
 		<div class="container mx-auto px-6 text-center">
 			<p class="mb-4">© 2025 Nicobot. Toate drepturile rezervate.</p>
 			<div class="space-x-6">
-				<a href="https://nicobot.ro/privacy" class="hover:text-indigo-400">Politica de
+				<a href="https://nicobot.ro/privacy" class="hover:text-primary">Politica de
 					confidențialitate</a>
-				<a href="https://nicobot.ro/contact" class="hover:text-indigo-400">Contact</a>
+				<a href="https://nicobot.ro/contact" class="hover:text-secondary">Contact</a>
 			</div>
 		</div>
 	</footer>
