@@ -135,8 +135,20 @@
 		</div>
 	</section>
 
-	<!-- Press Appearances Section -->
+	<!-- Instagram Follow Section -->
 	<section class="py-20 bg-gray-50">
+		<div id="insta-placeholder"></div>
+		<script>
+			fetch('/components/insta.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('insta-placeholder').innerHTML = data;
+				});
+		</script>
+	</section>
+
+	<!-- Press Appearances Section -->
+	<section class="py-20 bg-white">
 		<div class="container mx-auto px-6">
 			<h2 class="text-3xl font-bold text-center mb-12">Apariții în presă</h2>
 			<div class="max-w-3xl mx-auto">
