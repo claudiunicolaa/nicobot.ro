@@ -2,16 +2,11 @@
 <html lang="ro">
 
 <head>
-	<!-- load shared head component -->
-	<div id="head-placeholder"></div>
-	<script>
-		// load head component
-		fetch('../components/head.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('head-placeholder').innerHTML = data;
-			});
-	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="/logo/n.ico">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+	<link href="/styles/main.css" rel="stylesheet">
 	<!-- page-specific head content -->
 	<title>Contact - Nicobot</title>
 </head>
