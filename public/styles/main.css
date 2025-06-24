@@ -5,6 +5,11 @@
 	--light-gray: #F8F9FA;
 }
 
+/* base typography */
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 /* custom color classes */
 .bg-primary {
 	background-color: var(--primary-blue);
