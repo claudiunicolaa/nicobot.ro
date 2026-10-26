@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0F1D4A">
+<title>Nicobot — Sistem de design v1 · „Clinic și de încredere”</title>
+<meta name="description" content="Styleguide pentru nicobot.ro: paletă, tipografie, componente.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: { DEFAULT:'#4361EE', 50:'#EDF1FD', 100:'#DCE4FB', 200:'#BFCCF8', 300:'#9DB0FF', 400:'#6E86F3', 500:'#4361EE', 600:'#4361EE', 700:'#3450D4', 800:'#2A42B5', 900:'#213590' },
+        navy:  { DEFAULT:'#0F1D4A', 50:'#E8ECF7', 100:'#C7D0EA', 200:'#A9B5DA', 700:'#1A2B61', 800:'#142353', 900:'#0F1D4A', 950:'#0A1436' },
+        ink:   { 900:'#111A33', 700:'#3A4766', 500:'#5C6885', 400:'#8792AB' },
+        clinical: { DEFAULT:'#F3F6FC', deep:'#EAF0F9' },
+        line:  { DEFAULT:'#DCE3F1', strong:'#C3CDE6' },
+        sage:  { 50:'#E6F4F1', 100:'#C8E8E1', 300:'#7FD1C3', 600:'#177B6E', 700:'#116B60' },
+        warn:  { 50:'#FFF4E0', 700:'#9A5B00' },
+        danger:{ 50:'#FEF0EE', 700:'#B42318' }
+      },
+      fontFamily: {
+        display: ['"Source Serif 4"', 'Georgia', '"Times New Roman"', 'serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', '"Segoe UI"', 'Roboto', 'sans-serif']
+      },
+      borderRadius: { control:'10px', card:'16px', panel:'20px' },
+      boxShadow: {
+        hairline: '0 1px 2px 0 rgba(15,29,74,0.06)',
+        panel: '0 1px 2px rgba(15,29,74,0.04), 0 12px 32px -12px rgba(15,29,74,0.18)',
+        'panel-dark': '0 1px 2px rgba(0,0,0,0.2), 0 16px 40px -16px rgba(0,0,0,0.5)'
+      },
+      maxWidth: { site:'1200px', narrow:'44rem', prose:'65ch' },
+      letterSpacing: { eyebrow:'0.12em' }
+    }
+  }
+}
+</script>
+
+<style>
+/* ===== /styles/main.css v1 — inlined for preview ===== */
+:root{
+  --brand:#4361EE; --brand-700:#3450D4; --navy:#0F1D4A;
+  --ink-900:#111A33; --ink-700:#3A4766; --ink-500:#5C6885;
+  --clinical:#F3F6FC; --line:#DCE3F1; --line-strong:#C3CDE6; --sage-600:#177B6E;
+  --font-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+html{ -webkit-text-size-adjust:100%; scroll-padding-top:5rem; }
+@media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
+body{
+  font-family:var(--font-sans); font-size:1rem; line-height:1.65; color:var(--ink-700);
+  background:#fff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"cv11","ss01";
+}
+h1,h2,h3,.font-display{ font-family:var(--font-display); font-optical-sizing:auto; }
+h1,h2,h3,h4{ color:var(--navy); text-wrap:balance; }
+h4{ color:var(--ink-900); }
+p{ text-wrap:pretty; }
+strong{ font-weight:600; color:var(--ink-900); }
+::selection{ background:#DCE4FB; color:var(--navy); }
+img,svg{ display:block; }
+.tabular{ font-variant-numeric:tabular-nums; }
+
+.eyebrow{ font-size:.75rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--brand-700); }
+@media (min-width:768px){ .eyebrow{ font-size:.8125rem; } }
+.h1{ font-family:var(--font-display); font-weight:600; font-size:2.25rem; line-height:1.1; letter-spacing:-.02em; color:var(--navy); }
+.h2{ font-family:var(--font-display); font-weight:600; font-size:1.875rem; line-height:1.15; letter-spacing:-.015em; color:var(--navy); }
+.h3{ font-family:var(--font-display); font-weight:600; font-size:1.375rem; line-height:1.3; letter-spacing:-.01em; color:var(--navy); }
+.h4{ font-family:var(--font-sans); font-weight:600; font-size:1.0625rem; line-height:1.4; letter-spacing:-.01em; color:var(--ink-900); }
+.lead{ font-size:1.125rem; line-height:1.6; color:var(--ink-700); }
+.stat{ font-weight:600; font-variant-numeric:tabular-nums; font-size:2rem; line-height:1; letter-spacing:-.02em; color:var(--navy); }
+@media (min-width:768px){
+  .h1{ font-size:3.5rem; line-height:1.05; } .h2{ font-size:2.5rem; line-height:1.1; }
+  .h3{ font-size:1.625rem; line-height:1.25; } .h4{ font-size:1.125rem; } .lead{ font-size:1.25rem; } .stat{ font-size:2.5rem; }
+}
+.link{ color:var(--brand-700); font-weight:500; text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line-strong); }
+.link:hover{ color:var(--navy); text-decoration-color:currentColor; }
+
+:focus{ outline:none; }
+:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; border-radius:6px; }
+.on-navy :focus-visible{ outline-color:#9DB0FF; }
+
+.bg-hero{
+  background:
+    radial-gradient(900px 480px at 88% -10%, rgba(67,97,238,.12), transparent 70%),
+    radial-gradient(640px 420px at -8% 100%, rgba(23,123,110,.07), transparent 70%),
+    #fff;
+}
+.bg-bars{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='112' viewBox='0 0 56 112'%3E%3Crect x='12' y='8' width='6' height='44' rx='3' fill='%234361EE' fill-opacity='.09'/%3E%3Crect x='38' y='60' width='6' height='44' rx='3' fill='%234361EE' fill-opacity='.09'/%3E%3C/svg%3E");
+  background-size:56px 112px;
+  -webkit-mask-image:radial-gradient(70% 70% at 70% 35%, #000 20%, transparent 80%);
+          mask-image:radial-gradient(70% 70% at 70% 35%, #000 20%, transparent 80%);
+}
+.bg-bars-dark{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='112' viewBox='0 0 56 112'%3E%3Crect x='12' y='8' width='6' height='44' rx='3' fill='%23ffffff' fill-opacity='.06'/%3E%3Crect x='38' y='60' width='6' height='44' rx='3' fill='%23ffffff' fill-opacity='.06'/%3E%3C/svg%3E");
+  background-size:56px 112px;
+  -webkit-mask-image:radial-gradient(60% 90% at 100% 50%, #000 10%, transparent 75%);
+          mask-image:radial-gradient(60% 90% at 100% 50%, #000 10%, transparent 75%);
+}
+.bg-grid-faint{
+  background-image:linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(80% 80% at 50% 0%, #000 30%, transparent 90%);
+          mask-image:radial-gradient(80% 80% at 50% 0%, #000 30%, transparent 90%);
+}
+
+details.faq summary{ list-style:none; }
+details.faq summary::-webkit-details-marker{ display:none; }
+details.faq summary::marker{ content:""; }
+details.faq summary svg{ transition:transform .2s ease; }
+details.faq[open] summary svg{ transform:rotate(180deg); }
+details.faq summary:focus-visible{ outline:2px solid var(--brand); outline-offset:4px; border-radius:6px; }
+
+.bubble-user{ margin-left:auto; max-width:80%; border-radius:16px 16px 4px 16px; background:#EDF1FD; color:var(--ink-900); padding:.75rem 1rem; font-size:.9375rem; line-height:1.5; }
+.bubble-bot{ max-width:85%; border-radius:16px 16px 16px 4px; background:#fff; border:1px solid var(--line); color:var(--ink-700); padding:.75rem 1rem; font-size:.9375rem; line-height:1.5; }
+
+.reveal{ opacity:0; transform:translateY(8px); transition:opacity .5s ease-out, transform .5s ease-out; transition-delay:calc(var(--reveal-i,0) * 60ms); }
+.reveal.is-visible{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation:none !important; transition:none !important; }
+  .reveal{ opacity:1; transform:none; }
+  html{ scroll-behavior:auto; }
+}
+
+/* ===== styleguide-only chrome (NU face parte din main.css) ===== */
+.sg-label{ display:inline-flex; align-items:center; gap:.5rem; font-size:.75rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-500); }
+.sg-label::before{ content:""; width:.5rem; height:.5rem; border-radius:9999px; background:var(--brand); }
+.sg-frame{ border:1px dashed var(--line-strong); border-radius:16px; overflow:hidden; }
+code.sg{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.75rem; color:var(--ink-500); background:var(--clinical); padding:.125rem .375rem; border-radius:4px; }
+</style>
+</head>
+
+<body class="bg-white text-ink-700">
+
+<!-- ===== SPRITE: logo (fill via currentColor) + iconuri Lucide (stroke 1.75) ===== -->
+<!-- În producție: <img src="/logo/logo-2.1.svg" alt="Nicobot" class="h-8 w-auto"> ; aici logo-ul este inline ca preview-ul să funcționeze și fără server. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="logo-full" viewBox="0 0 731 294" fill="currentColor">
+    <path d="M22 209C22 212.866 18.866 216 15 216H7C3.13401 216 0 212.866 0 209L0 153C0 149.134 3.13401 146 7 146H15C18.866 146 22 149.134 22 153L22 209Z"/>
+    <path d="M150 209C150 212.866 146.866 216 143 216H135C131.134 216 128 212.866 128 209V153C128 149.134 131.134 146 135 146H143C146.866 146 150 149.134 150 153V209Z"/>
+    <path d="M22 111C22 114.866 18.866 118 15 118H7C3.13401 118 0 114.866 0 111L0 55C0 51.134 3.13401 48 7 48H15C18.866 48 22 51.134 22 55L22 111Z"/>
+    <path d="M143.611 196.835C146.109 199.786 145.742 204.204 142.79 206.701L137.006 211.596C134.055 214.093 129.639 213.726 127.141 210.776L4.84633 66.3202C2.34792 63.369 2.71551 58.9512 5.66728 56.4535L11.452 51.5588C14.4027 49.062 18.8186 49.4294 21.3161 52.3795L143.611 196.835Z"/>
+    <path d="M128 55C128 51.134 131.134 48 135 48H143C146.866 48 150 51.134 150 55V111C150 114.866 146.866 118 143 118H135C131.134 118 128 114.866 128 111V55Z"/>
+    <path d="M150.003 62.9902C150.005 66.8573 146.871 69.9934 143.004 69.9939L96.572 69.9996C94.8475 69.9998 93.1836 69.3634 91.8994 68.2125L82.9813 60.2204C78.1985 55.9343 81.2299 48.0082 87.6521 48.0074L142.998 48.0007C146.863 48.0003 149.997 51.1321 149.999 54.997L150.003 62.9902Z"/>
+    <path d="M67.6953 204.208C72.2161 208.583 69.1185 216.237 62.827 216.237H7C3.13401 216.237 0 213.103 0 209.237V201.237C0 197.371 3.13401 194.237 7 194.237H54.5617C56.3787 194.237 58.1245 194.944 59.4301 196.208L67.6953 204.208Z"/>
+    <path d="M177.6 93.2C177.6 89.3333 178.933 86.0667 181.6 83.4C184.4 80.7333 187.867 79.4 192 79.4C196.267 79.4 199.667 80.7333 202.2 83.4C204.867 86.0667 206.2 89.3333 206.2 93.2C206.2 96.9333 204.867 100.2 202.2 103C199.667 105.667 196.267 107 192 107C187.867 107 184.4 105.667 181.6 103C178.933 100.2 177.6 96.9333 177.6 93.2ZM179.6 163.2H204.4V215.6C203.333 216 201.8 216.333 199.8 216.6C197.8 217 195.6 217.2 193.2 217.2C188.667 217.2 185.267 216.4 183 214.8C180.733 213.067 179.6 210.067 179.6 205.8V163.2ZM204.4 175.8H179.6V122.2C180.667 121.8 182.2 121.467 184.2 121.2C186.333 120.8 188.6 120.6 191 120.6C195.667 120.6 199.067 121.467 201.2 123.2C203.333 124.8 204.4 127.8 204.4 132.2V175.8ZM279.548 138.4C271.548 138.4 264.815 141 259.348 146.2C254.015 151.4 251.348 159 251.348 169C251.348 178.867 253.948 186.333 259.148 191.4C264.348 196.467 271.082 199 279.348 199C284.282 199 288.415 198.4 291.748 197.2C295.215 195.867 298.215 194.467 300.748 193C302.748 194.2 304.282 195.667 305.348 197.4C306.548 199 307.148 201 307.148 203.4C307.148 207.933 304.415 211.667 298.948 214.6C293.482 217.4 286.282 218.8 277.348 218.8C267.215 218.8 258.282 217 250.548 213.4C242.948 209.667 236.948 204.067 232.548 196.6C228.282 189.133 226.148 179.933 226.148 169C226.148 157.667 228.415 148.267 232.948 140.8C237.615 133.333 243.748 127.8 251.348 124.2C259.082 120.467 267.548 118.6 276.748 118.6C285.548 118.6 292.615 120.133 297.948 123.2C303.282 126.267 305.948 130.067 305.948 134.6C305.948 136.6 305.415 138.467 304.348 140.2C303.282 141.933 302.015 143.333 300.548 144.4C297.882 142.8 294.882 141.4 291.548 140.2C288.215 139 284.215 138.4 279.548 138.4ZM417.889 168.6C417.889 178.867 415.889 187.8 411.889 195.4C407.889 202.867 402.222 208.667 394.889 212.8C387.689 216.8 379.156 218.8 369.289 218.8C359.422 218.8 350.822 216.8 343.489 212.8C336.156 208.667 330.422 202.867 326.289 195.4C322.289 187.933 320.289 179 320.289 168.6C320.289 158.333 322.356 149.467 326.489 142C330.622 134.533 336.356 128.8 343.689 124.8C351.022 120.667 359.556 118.6 369.289 118.6C379.022 118.6 387.489 120.667 394.689 124.8C402.022 128.8 407.689 134.6 411.689 142.2C415.822 149.667 417.889 158.467 417.889 168.6ZM369.289 138.2C361.956 138.2 356.156 140.867 351.889 146.2C347.756 151.533 345.689 159 345.689 168.6C345.689 178.467 347.756 186.067 351.889 191.4C356.022 196.6 361.822 199.2 369.289 199.2C376.622 199.2 382.356 196.533 386.489 191.2C390.622 185.867 392.689 178.333 392.689 168.6C392.689 159.133 390.622 151.733 386.489 146.4C382.356 140.933 376.622 138.2 369.289 138.2ZM486.356 118.6C494.89 118.6 502.556 120.467 509.356 124.2C516.29 127.8 521.756 133.333 525.756 140.8C529.756 148.133 531.756 157.333 531.756 168.4C531.756 179.6 529.623 188.933 525.356 196.4C521.223 203.867 515.356 209.467 507.756 213.2C500.29 216.933 491.556 218.8 481.556 218.8C473.956 218.8 467.29 217.867 461.556 216C455.956 214.267 451.223 212.2 447.356 209.8C444.556 207.8 442.49 205.8 441.156 203.8C439.956 201.667 439.356 199.067 439.356 196V131.4H463.956V194.4C465.69 195.6 468.023 196.733 470.956 197.8C474.023 198.733 477.49 199.2 481.356 199.2C488.956 199.2 495.023 196.667 499.556 191.6C504.223 186.533 506.556 178.8 506.556 168.4C506.556 157.867 504.29 150.2 499.756 145.4C495.223 140.6 489.29 138.2 481.956 138.2C477.29 138.2 473.156 139.067 469.556 140.8C465.956 142.533 462.89 144.533 460.356 146.8L458.756 126.8C461.823 124.933 465.623 123.133 470.156 121.4C474.823 119.533 480.223 118.6 486.356 118.6ZM463.956 137H439.356V86C440.423 85.7333 441.956 85.4 443.956 85C445.956 84.6 448.156 84.4 450.556 84.4C455.223 84.4 458.623 85.2667 460.756 87C462.89 88.6 463.956 91.5333 463.956 95.8V137ZM645.623 168.6C645.623 178.867 643.623 187.8 639.623 195.4C635.623 202.867 629.957 208.667 622.623 212.8C615.423 216.8 606.89 218.8 597.023 218.8C587.157 218.8 578.557 216.8 571.223 212.8C563.89 208.667 558.157 202.867 554.023 195.4C550.023 187.933 548.023 179 548.023 168.6C548.023 158.333 550.09 149.467 554.223 142C558.357 134.533 564.09 128.8 571.423 124.8C578.757 120.667 587.29 118.6 597.023 118.6C606.757 118.6 615.223 120.667 622.423 124.8C629.757 128.8 635.423 134.6 639.423 142.2C643.557 149.667 645.623 158.467 645.623 168.6ZM597.023 138.2C589.69 138.2 583.89 140.867 579.623 146.2C575.49 151.533 573.423 159 573.423 168.6C573.423 178.467 575.49 186.067 579.623 191.4C583.757 196.6 589.557 199.2 597.023 199.2C604.357 199.2 610.09 196.533 614.223 191.2C618.357 185.867 620.423 178.333 620.423 168.6C620.423 159.133 618.357 151.733 614.223 146.4C610.09 140.933 604.357 138.2 597.023 138.2ZM666.891 163.2H691.491V186.8C691.491 191.2 692.757 194.333 695.291 196.2C697.957 198.067 701.691 199 706.491 199C708.624 199 710.891 198.733 713.291 198.2C715.824 197.667 717.957 197 719.691 196.2C720.624 197.267 721.491 198.533 722.291 200C723.091 201.467 723.491 203.267 723.491 205.4C723.491 209.267 721.624 212.467 717.891 215C714.291 217.533 708.624 218.8 700.891 218.8C690.357 218.8 682.024 216.467 675.891 211.8C669.891 207 666.891 199.267 666.891 188.6V163.2ZM681.891 142.8V123.4H721.091C721.624 124.333 722.157 125.667 722.691 127.4C723.357 129.133 723.691 130.933 723.691 132.8C723.691 136.133 722.891 138.667 721.291 140.4C719.691 142 717.624 142.8 715.091 142.8H681.891ZM691.491 168.6H666.891V96.6C667.957 96.2 669.491 95.8 671.491 95.4C673.624 95 675.824 94.8 678.091 94.8C682.757 94.8 686.157 95.6667 688.291 97.4C690.424 99 691.491 101.933 691.491 106.2V168.6Z"/>
+  </symbol>
+  <symbol id="logo-mark" viewBox="0 0 150 170" fill="currentColor">
+    <path d="M22 162C22 165.866 18.866 169 15 169H7C3.13401 169 0 165.866 0 162L0 106C0 102.134 3.13401 99 7 99H15C18.866 99 22 102.134 22 106L22 162Z"/>
+    <path d="M150 162C150 165.866 146.866 169 143 169H135C131.134 169 128 165.866 128 162V106C128 102.134 131.134 99 135 99H143C146.866 99 150 102.134 150 106V162Z"/>
+    <path d="M22 64C22 67.866 18.866 71 15 71H7C3.13401 71 0 67.866 0 64L0 8C0 4.13401 3.13401 1 7 1L15 1C18.866 1 22 4.13401 22 8L22 64Z"/>
+    <path d="M143.611 149.835C146.109 152.786 145.742 157.204 142.79 159.701L137.006 164.596C134.055 167.093 129.639 166.726 127.141 163.776L4.84633 19.3202C2.34792 16.369 2.71551 11.9512 5.66728 9.45352L11.452 4.55879C14.4027 2.06203 18.8186 2.42945 21.3161 5.37953L143.611 149.835Z"/>
+    <path d="M128 8C128 4.13401 131.134 0.999996 135 0.999996H143C146.866 0.999996 150 4.134 150 8V64C150 67.866 146.866 71 143 71H135C131.134 71 128 67.866 128 64V8Z"/>
+    <path d="M150.003 15.9902C150.005 19.8573 146.871 22.9934 143.004 22.9939L96.572 22.9996C94.8475 22.9998 93.1836 22.3634 91.8994 21.2125L82.9813 13.2204C78.1985 8.93429 81.2299 1.00821 87.6521 1.00744L142.998 1.00073C146.863 1.00026 149.997 4.13214 149.999 7.997L150.003 15.9902Z"/>
+    <path d="M67.6953 157.208C72.2161 161.583 69.1185 169.237 62.827 169.237H7C3.13401 169.237 0 166.103 0 162.237V154.237C0 150.371 3.13401 147.237 7 147.237H54.5617C56.3787 147.237 58.1245 147.944 59.4301 149.208L67.6953 157.208Z"/>
+  </symbol>
+
+  <!-- Lucide icons -->
+  <symbol id="i-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-heart-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
+  <symbol id="i-message-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+</svg>
+
+<!-- ===================================================================== -->
+<!-- 5.1 TOP NAV (live, sticky) -->
+<!-- ===================================================================== -->
+<header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-[2px]">
+  <div class="mx-auto flex h-16 max-w-site items-center justify-between px-5 sm:px-6 lg:px-8">
+    <a href="#top" class="flex items-center text-brand" aria-label="Nicobot — acasă">
+      <svg class="h-8 w-[80px]" aria-hidden="true"><use href="#logo-full"/></svg>
+    </a>
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Principal">
+      <a href="#hero" class="text-sm font-medium text-navy" aria-current="page">Acasă</a>
+      <a href="#features" class="text-sm font-medium text-ink-700 hover:text-navy">Pentru clinici</a>
+      <a href="#hero" class="text-sm font-medium text-ink-700 hover:text-navy">Demo chat</a>
+      <a href="#footer" class="text-sm font-medium text-ink-700 hover:text-navy">Contact</a>
+    </nav>
+    <div class="hidden md:block">
+      <a href="https://calendly.com/claudiu-nicolaa/25min" class="inline-flex h-10 items-center gap-2 rounded-control bg-brand px-4 text-sm font-semibold text-white transition-colors hover:bg-brand-700 active:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Programează o discuție</a>
+    </div>
+    <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-control text-ink-700 transition-colors hover:bg-clinical md:hidden" aria-controls="mobile-menu" aria-expanded="false" data-menu-toggle>
+      <span class="sr-only">Deschide meniul</span>
+      <svg class="h-6 w-6" data-icon-open aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="hidden h-6 w-6" data-icon-close aria-hidden="true"><use href="#i-x"/></svg>
+    </button>
+  </div>
+  <!-- 5.2 MOBILE MENU (live sub 768px) -->
+  <div id="mobile-menu" class="hidden border-t border-line bg-white shadow-panel md:hidden" data-menu>
+    <nav class="mx-auto max-w-site space-y-1 px-5 py-4 sm:px-6" aria-label="Mobil">
+      <a href="#hero" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Acasă</a>
+      <a href="#features" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Pentru clinici</a>
+      <a href="#hero" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Demo chat</a>
+      <a href="#footer" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Contact</a>
+      <a href="https://calendly.com/claudiu-nicolaa/25min" class="mt-3 flex h-11 items-center justify-center rounded-control bg-brand text-base font-semibold text-white hover:bg-brand-700">Programează o discuție</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================================================================== -->
+<!-- INTRO STYLEGUIDE -->
+<!-- ===================================================================== -->
+<section id="top" class="relative overflow-hidden border-b border-line bg-clinical">
+  <div class="absolute inset-0 bg-grid-faint" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-site px-5 py-14 sm:px-6 md:py-20 lg:px-8">
+    <p class="eyebrow">Sistem de design v1 · 26 octombrie 2026</p>
+    <h1 class="h1 mt-3 max-w-4xl">Clinic și de încredere.</h1>
+    <p class="lead mt-5 max-w-prose">Direcția vizuală pentru nicobot.ro: alb, un singur albastru (cel din logo), bleumarin pentru autoritate, serif sobru în titluri, borduri de 1&nbsp;px în loc de umbre. Dovada vine din produs și cifre, nu din fotografii stock.</p>
+    <div class="mt-7 flex flex-wrap gap-2">
+      <span class="inline-flex items-center rounded-full border border-line bg-white px-3 py-1 text-sm font-medium text-ink-900">clinic</span>
+      <span class="inline-flex items-center rounded-full border border-line bg-white px-3 py-1 text-sm font-medium text-ink-900">sobru</span>
+      <span class="inline-flex items-center rounded-full border border-line bg-white px-3 py-1 text-sm font-medium text-ink-900">verificabil</span>
+    </div>
+    <nav class="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Cuprins styleguide">
+      <a class="link" href="#palette">Paletă</a>
+      <a class="link" href="#type">Tipografie</a>
+      <a class="link" href="#controls">Butoane &amp; badge-uri</a>
+      <a class="link" href="#hero">Hero B2B</a>
+      <a class="link" href="#features">Carduri</a>
+      <a class="link" href="#steps">Pași</a>
+      <a class="link" href="#stats">Statistici</a>
+      <a class="link" href="#press">Presă</a>
+      <a class="link" href="#faq">FAQ</a>
+      <a class="link" href="#icons">Iconuri</a>
+      <a class="link" href="#backgrounds">Fundaluri</a>
+      <a class="link" href="#cta">CTA</a>
+      <a class="link" href="#footer">Footer</a>
+    </nav>
+    <p class="mt-6 text-xs text-ink-500">Textele din componente sunt placeholder; cifrele marcate cu sursă sunt reale (ZF, 2024), restul sunt exemple.</p>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 2. PALETĂ -->
+<!-- ===================================================================== -->
+<section id="palette" class="py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">2 · Paletă</p>
+    <h2 class="h2 mt-3">Un albastru, un bleumarin, o tentă clinică.</h2>
+    <p class="lead mt-4 max-w-prose">Toate tentele derivă din hue-ul logo-ului (≈228°). Accentul secundar (sage) apare doar în badge-uri de încredere și stări de succes.</p>
+
+    <h3 class="h4 mt-12">Brand &amp; bleumarin</h3>
+    <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-brand"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">brand · 500</p>
+        <p class="text-xs text-ink-500">#4361EE · butoane, iconuri, linkuri pe alb · alb pe brand 5.02:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-brand-700"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">brand · 700</p>
+        <p class="text-xs text-ink-500">#3450D4 · hover, text pe tente · pe alb 6.47:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-brand-800"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">brand · 800</p>
+        <p class="text-xs text-ink-500">#2A42B5 · active/pressed</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-brand-300"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">brand · 300</p>
+        <p class="text-xs text-ink-500">#9DB0FF · linkuri/eyebrow pe navy · 7.79:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-brand-100"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">brand · 100</p>
+        <p class="text-xs text-ink-500">#DCE4FB · selecție, icon-chip</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control border border-line bg-brand-50"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">brand · 50</p>
+        <p class="text-xs text-ink-500">#EDF1FD · pill info, bulă vizitator</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-navy"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">navy · 900</p>
+        <p class="text-xs text-ink-500">#0F1D4A · titluri, CTA band, footer · pe alb 16.22:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-navy-800"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">navy · 800</p>
+        <p class="text-xs text-ink-500">#142353 · card pe navy</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-navy-700"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">navy · 700</p>
+        <p class="text-xs text-ink-500">#1A2B61 · borduri pe navy</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-navy-100"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">navy · 100</p>
+        <p class="text-xs text-ink-500">#C7D0EA · text secundar pe navy · 10.53:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-navy-200"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">navy · 200</p>
+        <p class="text-xs text-ink-500">#A9B5DA · meta pe navy · 7.96:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control border border-line bg-navy-50"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">navy · 50</p>
+        <p class="text-xs text-ink-500">#E8ECF7 · chip neutru</p>
+      </div>
+    </div>
+
+    <h3 class="h4 mt-12">Text, suprafețe, linii</h3>
+    <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control bg-ink-900 p-3 text-sm font-semibold text-white">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">ink · 900</p>
+        <p class="text-xs text-ink-500">#111A33 · cifre, nume, h4 · 17.22:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control bg-ink-700 p-3 text-sm font-semibold text-white">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">ink · 700</p>
+        <p class="text-xs text-ink-500">#3A4766 · body implicit · 9.24:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control bg-ink-500 p-3 text-sm font-semibold text-white">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">ink · 500</p>
+        <p class="text-xs text-ink-500">#5C6885 · small, captions · 5.56:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control bg-ink-400 p-3 text-sm font-semibold text-white">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">ink · 400</p>
+        <p class="text-xs text-ink-500">#8792AB · doar placeholder/logo-uri · 3.12:1 (nu text)</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control border border-line bg-clinical"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">clinical</p>
+        <p class="text-xs text-ink-500">#F3F6FC · fundal secțiuni alternate</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control border border-line bg-clinical-deep"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">clinical · deep</p>
+        <p class="text-xs text-ink-500">#EAF0F9 · elemente în secțiuni clinical</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-line"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">line</p>
+        <p class="text-xs text-ink-500">#DCE3F1 · bordura 1 px implicită</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-line-strong"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">line · strong</p>
+        <p class="text-xs text-ink-500">#C3CDE6 · hover, separatoare</p>
+      </div>
+    </div>
+
+    <h3 class="h4 mt-12">Accent secundar &amp; semantice</h3>
+    <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control bg-sage-700 p-3 text-sm font-semibold text-white">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">sage · 700</p>
+        <p class="text-xs text-ink-500">#116B60 · text badge trust · pe alb 6.37:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-sage-600"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">sage · 600</p>
+        <p class="text-xs text-ink-500">#177B6E · icon success, punct „online”</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="h-20 rounded-control bg-sage-300"></div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">sage · 300</p>
+        <p class="text-xs text-ink-500">#7FD1C3 · badge pe navy · 9.12:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control border border-line bg-sage-50 p-3 text-sm font-semibold text-sage-700">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">sage · 50</p>
+        <p class="text-xs text-ink-500">#E6F4F1 · fundal badge · 5.64:1 cu sage-700</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control border border-line bg-warn-50 p-3 text-sm font-semibold text-warn-700">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">warn</p>
+        <p class="text-xs text-ink-500">#9A5B00 pe #FFF4E0 · 4.98:1</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-3">
+        <div class="flex h-20 items-end rounded-control border border-line bg-danger-50 p-3 text-sm font-semibold text-danger-700">Aa</div>
+        <p class="mt-3 text-sm font-semibold text-ink-900">danger</p>
+        <p class="text-xs text-ink-500">#B42318 pe #FEF0EE · 5.92:1</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 3. TIPOGRAFIE -->
+<!-- ===================================================================== -->
+<section id="type" class="border-y border-line bg-clinical py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">3 · Tipografie</p>
+    <h2 class="h2 mt-3">Source Serif 4 pentru titluri, Inter pentru text.</h2>
+    <p class="lead mt-4 max-w-prose">Serif de registru academic pentru vocea instituției; sans neutru pentru produs și UI. Weight maxim 600. Subset latin-ext: ș, ț, ă, â, î.</p>
+
+    <div class="mt-10 divide-y divide-line rounded-card border border-line bg-white">
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">h1</p><p class="mt-1 text-xs text-ink-500">Source Serif 4 600 · 36/56 px · lh 1.1/1.05 · −0.02em</p></div>
+        <p class="h1 md:col-span-9">Primul contact cu pacientul, gestionat clinic.</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">h2</p><p class="mt-1 text-xs text-ink-500">Source Serif 4 600 · 30/40 px · lh 1.15/1.1 · −0.015em</p></div>
+        <p class="h2 md:col-span-9">Dezvoltat alături de psihologi acreditați.</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">h3</p><p class="mt-1 text-xs text-ink-500">Source Serif 4 600 · 22/26 px · lh 1.3/1.25 · −0.01em</p></div>
+        <p class="h3 md:col-span-9">Confidențialitate și conformitate GDPR, de la prima întrebare.</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">h4</p><p class="mt-1 text-xs text-ink-500">Inter 600 · 17/18 px · lh 1.4 · −0.01em</p></div>
+        <p class="h4 md:col-span-9">Triaj conversațional, fără diagnostic</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">lead</p><p class="mt-1 text-xs text-ink-500">Inter 400 · 18/20 px · lh 1.6 · ink-700</p></div>
+        <p class="lead max-w-prose md:col-span-9">Nicobot preia conversația inițială pe site-ul clinicii, înțelege nevoia și propune terapeutul potrivit, după regulile stabilite de voi.</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">body</p><p class="mt-1 text-xs text-ink-500">Inter 400 · 16 px · lh 1.65 · ink-700 · max 65ch</p></div>
+        <p class="max-w-prose md:col-span-9">Fiecare conversație respectă un protocol validat de psihologi: întrebări deschise, fără interpretări clinice, cu orientare către un specialist atunci când situația o cere. Datele sunt stocate în Uniunea Europeană și nu sunt folosite pentru antrenarea modelelor. <a class="link" href="#">Politica de confidențialitate</a>.</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">small</p><p class="mt-1 text-xs text-ink-500">Inter 400 · 14 px · lh 1.5 · ink-500</p></div>
+        <p class="text-sm leading-normal text-ink-500 md:col-span-9">Sursă: Ziarul Financiar, „Start-up Pitch: Calmly”, 2024. Nicobot nu este un serviciu de urgență.</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">eyebrow</p><p class="mt-1 text-xs text-ink-500">Inter 600 · 12/13 px · +0.12em · uppercase · brand-700</p></div>
+        <p class="eyebrow md:col-span-9">Pentru cabinete și clinici de psihoterapie</p>
+      </div>
+      <div class="grid gap-3 p-6 md:grid-cols-12 md:gap-6 md:p-7">
+        <div class="md:col-span-3"><p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">stat</p><p class="mt-1 text-xs text-ink-500">Inter 600 · 32/40 px · tabular-nums · −0.02em</p></div>
+        <p class="stat md:col-span-9">1.000+ <span class="text-base font-normal tracking-normal text-ink-500">ședințe intermediate</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.4 / 5.5 / 5.13 EYEBROW, BUTOANE, BADGE-URI -->
+<!-- ===================================================================== -->
+<section id="controls" class="py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">5.4 · 5.5 · 5.13 · Eyebrow, butoane, badge-uri</p>
+    <h2 class="h2 mt-3">Un singur buton albastru pe ecran.</h2>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      <div class="rounded-card border border-line bg-white p-6 md:p-7">
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">Butoane pe alb</p>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a href="#" class="inline-flex h-11 items-center justify-center gap-2 rounded-control bg-brand px-5 text-[15px] font-semibold text-white transition-colors hover:bg-brand-700 active:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Programează o discuție <svg class="h-4 w-4" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a href="#" class="inline-flex h-11 items-center justify-center gap-2 rounded-control border border-line-strong bg-white px-5 text-[15px] font-semibold text-navy transition-colors hover:border-navy hover:bg-clinical active:bg-clinical-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Vezi demo-ul</a>
+          <a href="#" class="inline-flex h-11 items-center gap-2 rounded-control px-3 text-[15px] font-semibold text-brand-700 transition-colors hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&>svg]:transition-transform hover:[&>svg]:translate-x-0.5">Află mai multe <svg class="h-4 w-4" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </div>
+        <p class="mt-6 text-xs font-semibold uppercase tracking-eyebrow text-ink-500">Mărimi</p>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <a href="#" class="inline-flex h-9 items-center justify-center gap-2 rounded-control bg-brand px-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700">Rezervă</a>
+          <a href="#" class="inline-flex h-11 items-center justify-center gap-2 rounded-control bg-brand px-5 text-[15px] font-semibold text-white transition-colors hover:bg-brand-700">Implicit</a>
+          <a href="#" class="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-brand px-6 text-base font-semibold text-white transition-colors hover:bg-brand-700">Programează o discuție</a>
+          <a href="#" class="inline-flex h-11 items-center justify-center gap-2 rounded-control border border-line-strong bg-white px-5 text-[15px] font-semibold text-navy transition-colors hover:border-navy hover:bg-clinical"><svg class="h-4 w-4" aria-hidden="true"><use href="#i-phone"/></svg> Sună-ne</a>
+        </div>
+        <p class="mt-6 text-xs font-semibold uppercase tracking-eyebrow text-ink-500">Eyebrow</p>
+        <div class="mt-4 space-y-3">
+          <p class="eyebrow">Pentru clinici</p>
+          <p class="eyebrow inline-flex items-center gap-2 before:h-px before:w-6 before:bg-brand">Cum funcționează</p>
+        </div>
+      </div>
+
+      <div class="on-navy rounded-card bg-navy p-6 md:p-7">
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-navy-200">Butoane pe navy</p>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a href="#" class="inline-flex h-11 items-center justify-center gap-2 rounded-control bg-white px-5 text-[15px] font-semibold text-navy transition-colors hover:bg-brand-50">Programează o discuție <svg class="h-4 w-4" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a href="#" class="inline-flex h-11 items-center justify-center gap-2 rounded-control border border-navy-700 px-5 text-[15px] font-semibold text-white transition-colors hover:bg-navy-800">contact@nicobot.ro</a>
+          <a href="#" class="inline-flex h-11 items-center gap-2 rounded-control px-3 text-[15px] font-semibold text-brand-300 transition-colors hover:bg-navy-800">Află mai multe</a>
+        </div>
+        <p class="mt-6 text-xs font-semibold uppercase tracking-eyebrow text-navy-200">Eyebrow pe navy</p>
+        <p class="eyebrow mt-4 text-brand-300">Discuție de 25 de minute</p>
+        <p class="mt-6 text-xs font-semibold uppercase tracking-eyebrow text-navy-200">Badge-uri pe navy</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-navy-800 px-2.5 py-1 text-xs font-semibold text-sage-300 ring-1 ring-inset ring-navy-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-shield-check"/></svg> Psihologi acreditați</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-navy-800 px-2.5 py-1 text-xs font-semibold text-navy-100 ring-1 ring-inset ring-navy-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-lock"/></svg> Date în UE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-card border border-line bg-white p-6 md:p-7">
+      <p class="text-xs font-semibold uppercase tracking-eyebrow text-ink-500">Badge / pill</p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-sparkles"/></svg> Asistat AI</span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-sage-50 px-2.5 py-1 text-xs font-semibold text-sage-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-shield-check"/></svg> Verificat de psihologi</span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-sage-50 px-2.5 py-1 text-xs font-semibold text-sage-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-check"/></svg> Confidențial</span>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 py-1 text-xs font-semibold text-ink-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-lock"/></svg> GDPR · date în UE</span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-warn-50 px-2.5 py-1 text-xs font-semibold text-warn-700">În curs de configurare</span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-danger-50 px-2.5 py-1 text-xs font-semibold text-danger-700">Nu este serviciu de urgență</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.3 HERO B2B -->
+<!-- ===================================================================== -->
+<div class="mx-auto max-w-site px-5 pb-4 sm:px-6 lg:px-8"><p class="sg-label">5.3 · Hero B2B (live)</p></div>
+<section id="hero" class="bg-hero relative overflow-hidden border-y border-line">
+  <div class="mx-auto grid max-w-site items-center gap-12 px-5 pt-14 pb-16 sm:px-6 md:pt-24 md:pb-28 lg:grid-cols-12 lg:gap-16 lg:px-8">
+    <div class="lg:col-span-6">
+      <p class="eyebrow">Pentru cabinete și clinici de psihoterapie</p>
+      <h1 class="h1 mt-3">Primul contact cu pacientul, gestionat clinic — 24/7.</h1>
+      <p class="lead mt-5 max-w-prose">Nicobot preia conversația inițială pe site-ul clinicii, înțelege nevoia și propune terapeutul potrivit, după regulile stabilite de voi. Fără diagnostic, fără promisiuni, cu confidențialitate deplină.</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="https://calendly.com/claudiu-nicolaa/25min" class="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-brand px-6 text-base font-semibold text-white transition-colors hover:bg-brand-700 active:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Programează o discuție <svg class="h-4 w-4" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a href="#" class="inline-flex h-12 items-center justify-center gap-2 rounded-control border border-line-strong bg-white px-6 text-base font-semibold text-navy transition-colors hover:border-navy hover:bg-clinical focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Vezi demo-ul</a>
+      </div>
+      <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-500">
+        <li class="inline-flex items-center gap-2"><svg class="h-4 w-4 text-sage-600" aria-hidden="true"><use href="#i-shield-check"/></svg> Dezvoltat cu psihologi acreditați</li>
+        <li class="inline-flex items-center gap-2"><svg class="h-4 w-4 text-sage-600" aria-hidden="true"><use href="#i-lock"/></svg> Date în UE · GDPR</li>
+        <li class="inline-flex items-center gap-2"><svg class="h-4 w-4 text-sage-600" aria-hidden="true"><use href="#i-clock"/></svg> Instalare în 15 minute</li>
+      </ul>
+    </div>
+
+    <!-- PROOF PANEL: conversație construită în HTML -->
+    <div class="relative lg:col-span-6">
+      <div class="absolute -inset-x-8 -inset-y-10 bg-bars" aria-hidden="true"></div>
+      <div class="reveal relative rounded-panel border border-line bg-white shadow-panel">
+        <div class="flex items-center gap-3 border-b border-line px-5 py-3.5">
+          <span class="h-2 w-2 rounded-full bg-sage-600" aria-hidden="true"></span>
+          <p class="text-sm font-semibold text-ink-900">Nicobot · asistent Clinica Mindcare</p>
+          <span class="ml-auto inline-flex items-center gap-1.5 rounded-full bg-sage-50 px-2.5 py-1 text-xs font-semibold text-sage-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-lock"/></svg> Confidențial</span>
+        </div>
+        <div class="space-y-3 px-5 py-5">
+          <div class="bubble-user">Bună. Caut un psiholog pentru atacuri de panică, dar nu știu de unde să încep.</div>
+          <div class="bubble-bot">Mulțumesc că ai scris — e un prim pas bun. Ca să te îndrum către persoana potrivită: preferi ședințe online sau la cabinet?</div>
+          <div class="bubble-user">Online, după ora 18.</div>
+          <div class="bubble-bot">Am înțeles. Pe baza a ce mi-ai spus, cred că ți s-ar potrivi un psihoterapeut cu experiență în anxietate. Iată o propunere:</div>
+          <div class="rounded-card border border-sage-300/60 bg-sage-50 p-4">
+            <p class="text-xs font-semibold uppercase tracking-eyebrow text-sage-700">Terapeut propus</p>
+            <div class="mt-2 flex items-start gap-3">
+              <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white font-display text-base font-semibold text-navy ring-1 ring-sage-300">AD</span>
+              <div class="min-w-0">
+                <p class="text-[15px] font-semibold text-ink-900">Ana Dumitrescu</p>
+                <p class="text-sm text-ink-700">Psihoterapeut cognitiv-comportamental · atestat COPSI</p>
+                <p class="mt-1 inline-flex items-center gap-1.5 text-sm text-ink-500"><svg class="h-4 w-4" aria-hidden="true"><use href="#i-calendar"/></svg> joi, 18:30 · online</p>
+              </div>
+            </div>
+            <div class="mt-3 flex gap-2">
+              <a href="#" class="inline-flex h-9 items-center justify-center gap-2 rounded-control bg-brand px-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700">Rezervă</a>
+              <a href="#" class="inline-flex h-9 items-center gap-2 rounded-control px-3 text-sm font-semibold text-brand-700 transition-colors hover:bg-white">Alt terapeut</a>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 border-t border-line px-5 py-3">
+          <div class="flex h-10 flex-1 items-center rounded-control border border-line bg-clinical px-3 text-sm text-ink-400">Scrie un mesaj…</div>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-control bg-brand text-white" aria-hidden="true"><svg class="h-4 w-4"><use href="#i-arrow-right"/></svg></span>
+        </div>
+      </div>
+      <div class="reveal relative mt-4 grid grid-cols-3 divide-x divide-line rounded-card border border-line bg-white" style="--reveal-i:1">
+        <div class="px-4 py-3"><p class="tabular text-lg font-semibold text-navy">&lt; 1 min</p><p class="text-xs text-ink-500">timp de răspuns</p></div>
+        <div class="px-4 py-3"><p class="tabular text-lg font-semibold text-navy">24/7</p><p class="text-xs text-ink-500">disponibil</p></div>
+        <div class="px-4 py-3"><p class="tabular text-lg font-semibold text-navy">0</p><p class="text-xs text-ink-500">diagnostice puse de AI</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.14 TRUST STRIP -->
+<!-- ===================================================================== -->
+<section class="border-b border-line bg-clinical">
+  <div class="mx-auto flex max-w-site flex-col items-center gap-5 px-5 py-8 sm:px-6 md:flex-row md:justify-between lg:px-8">
+    <p class="inline-flex items-center gap-2 text-sm font-medium text-ink-900"><svg class="h-5 w-5 text-sage-600" aria-hidden="true"><use href="#i-shield-check"/></svg> Dezvoltat alături de psihologi acreditați</p>
+    <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3" aria-label="Parteneri și presă">
+      <li class="font-display text-lg font-semibold text-ink-400">Calmly</li>
+      <li class="font-display text-lg font-semibold text-ink-400">Camy</li>
+      <li class="font-display text-lg font-semibold text-ink-400">Ziarul Financiar</li>
+      <li class="font-display text-lg font-semibold text-ink-400">Vorbărie</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.6 FEATURE CARDS -->
+<!-- ===================================================================== -->
+<section id="features" class="py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">5.6 · Feature card cu icon</p>
+    <div class="mt-3 max-w-narrow">
+      <p class="eyebrow">Ce face Nicobot pentru clinică</p>
+      <h2 class="h2 mt-3">Triaj, orientare și programare — după protocolul vostru.</h2>
+      <p class="lead mt-4">Fiecare regulă de comunicare este setată de clinică. Nicobot nu improvizează.</p>
+    </div>
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 md:mt-14 md:gap-6 lg:grid-cols-3">
+      <article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i:0">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-message-circle"/></svg></div>
+        <h3 class="h4 mt-5">Triaj conversațional</h3>
+        <p class="mt-2 text-[15px] leading-relaxed text-ink-700">Clarifică motivul vizitei și nivelul de urgență prin întrebări validate, fără să pună diagnostic.</p>
+      </article>
+      <article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i:1">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-users"/></svg></div>
+        <h3 class="h4 mt-5">Potrivire cu terapeutul</h3>
+        <p class="mt-2 text-[15px] leading-relaxed text-ink-700">Propune specialistul potrivit din echipa voastră, pe baza specializării, disponibilității și preferințelor pacientului.</p>
+      </article>
+      <article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i:2">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-calendar"/></svg></div>
+        <h3 class="h4 mt-5">Programare în regulile voastre</h3>
+        <p class="mt-2 text-[15px] leading-relaxed text-ink-700">Intervale, durată, politică de anulare — tu le stabilești, Nicobot le respectă întocmai.</p>
+      </article>
+      <article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i:3">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-lock"/></svg></div>
+        <h3 class="h4 mt-5">Confidențialitate implicită</h3>
+        <p class="mt-2 text-[15px] leading-relaxed text-ink-700">Date stocate în UE, criptate, nefolosite la antrenarea modelelor. Conform GDPR.</p>
+      </article>
+      <article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i:4">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-heart-pulse"/></svg></div>
+        <h3 class="h4 mt-5">Protocol de siguranță</h3>
+        <p class="mt-2 text-[15px] leading-relaxed text-ink-700">Detectează semnale de risc și direcționează imediat către resurse de urgență și către echipa clinicii.</p>
+      </article>
+      <article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i:5">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-file-text"/></svg></div>
+        <h3 class="h4 mt-5">Rezumat pentru terapeut</h3>
+        <p class="mt-2 text-[15px] leading-relaxed text-ink-700">Terapeutul primește un rezumat structurat al conversației inițiale, înainte de prima ședință.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.7 PAȘI NUMEROTAȚI -->
+<!-- ===================================================================== -->
+<section id="steps" class="border-y border-line bg-clinical py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">5.7 · Pas numerotat</p>
+    <div class="mt-3 max-w-narrow">
+      <p class="eyebrow inline-flex items-center gap-2 before:h-px before:w-6 before:bg-brand">Cum funcționează</p>
+      <h2 class="h2 mt-3">Patru pași până la prima programare.</h2>
+    </div>
+    <ol class="mt-10 grid gap-8 md:mt-14 sm:grid-cols-2 lg:grid-cols-4">
+      <li class="relative pl-14 lg:before:absolute lg:before:left-10 lg:before:top-5 lg:before:h-px lg:before:w-[calc(100%-2.5rem)] lg:before:bg-line-strong">
+        <span class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-brand">1</span>
+        <h3 class="h4">Discuție de 25 de minute</h3>
+        <p class="mt-1.5 text-[15px] text-ink-700">Înțelegem echipa, specializările și regulile de programare ale clinicii.</p>
+      </li>
+      <li class="relative pl-14 lg:before:absolute lg:before:left-10 lg:before:top-5 lg:before:h-px lg:before:w-[calc(100%-2.5rem)] lg:before:bg-line-strong">
+        <span class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-brand">2</span>
+        <h3 class="h4">Configurare protocol</h3>
+        <p class="mt-1.5 text-[15px] text-ink-700">Psihologii noștri adaptează întrebările și limitele conversației la profilul vostru.</p>
+      </li>
+      <li class="relative pl-14 lg:before:absolute lg:before:left-10 lg:before:top-5 lg:before:h-px lg:before:w-[calc(100%-2.5rem)] lg:before:bg-line-strong">
+        <span class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-brand">3</span>
+        <h3 class="h4">O linie de cod pe site</h3>
+        <p class="mt-1.5 text-[15px] text-ink-700">Instalare în 15 minute, fără modificări în platforma existentă.</p>
+      </li>
+      <li class="relative pl-14">
+        <span class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-brand">4</span>
+        <h3 class="h4">Primele programări</h3>
+        <p class="mt-1.5 text-[15px] text-ink-700">Vizitatorii primesc răspuns imediat; voi primiți pacienți pregătiți pentru prima ședință.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.8 STAT TILES -->
+<!-- ===================================================================== -->
+<section id="stats" class="py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">5.8 · Stat / proof tile</p>
+    <h2 class="h2 mt-3 max-w-narrow">Cifre cu sursă, nu promisiuni.</h2>
+    <div class="mt-10 grid grid-cols-2 gap-5 md:gap-6 lg:grid-cols-4">
+      <div class="rounded-card border border-line bg-white p-5 md:p-6">
+        <p class="stat">1.000+</p>
+        <p class="mt-2 text-sm text-ink-500">ședințe intermediate de partenerul Calmly în 2024 · sursa: ZF</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-5 md:p-6">
+        <p class="stat">24/7</p>
+        <p class="mt-2 text-sm text-ink-500">răspuns imediat pe site-ul clinicii, inclusiv în weekend</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-5 md:p-6">
+        <p class="stat">25 min</p>
+        <p class="mt-2 text-sm text-ink-500">durata discuției introductive cu echipa Nicobot</p>
+      </div>
+      <div class="rounded-card border border-line bg-white p-5 md:p-6">
+        <p class="stat">100%</p>
+        <p class="mt-2 text-sm text-ink-500">conversații stocate în UE · conform GDPR</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.9 QUOTE / PRESS CARD -->
+<!-- ===================================================================== -->
+<section id="press" class="border-y border-line bg-clinical py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">5.9 · Quote / press card</p>
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      <figure class="rounded-card border border-line bg-white p-6 md:p-8">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="inline-flex h-9 items-center rounded-control border border-line bg-clinical px-3 text-xs font-semibold uppercase tracking-eyebrow text-ink-700">Ziarul Financiar</span>
+          <span class="text-sm text-ink-500">ZF IT Generation · Start-up Pitch</span>
+        </div>
+        <blockquote class="mt-5 font-display text-xl leading-snug text-navy md:text-2xl">„Anul acesta am intermediat peste 1.000 de ședințe de terapie. Pregătim scalarea și o nouă rundă de finanțare.”</blockquote>
+        <figcaption class="mt-4 text-sm text-ink-500">Calmly, partener care integrează Nicobot sub numele „Camy” · <a class="link" href="https://www.zf.ro/zf-it-generation/zf-it-generation-start-up-pitch-radu-bendic-cristina-georgescu-22806068" target="_blank" rel="noopener">Citește articolul</a></figcaption>
+      </figure>
+      <figure class="rounded-card border border-line bg-white p-6 md:p-8">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 font-display text-base font-semibold text-navy">MP</span>
+          <div>
+            <p class="text-sm font-semibold text-ink-900">Psiholog clinician, cabinet partener</p>
+            <p class="text-xs text-ink-500">placeholder · testimonial B2B</p>
+          </div>
+        </div>
+        <blockquote class="mt-5 font-display text-xl leading-snug text-navy md:text-2xl">„Pacienții ajung la prima ședință cu așteptări clare. Nicobot nu face terapie — face ca primul contact să fie calm și corect.”</blockquote>
+        <figcaption class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-sage-50 px-2.5 py-1 text-xs font-semibold text-sage-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-shield-check"/></svg> Psiholog acreditat COPSI</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.10 FAQ -->
+<!-- ===================================================================== -->
+<section id="faq" class="py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">5.10 · FAQ accordion (native details)</p>
+    <div class="mt-3 grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <p class="eyebrow">Întrebări frecvente</p>
+        <h2 class="h2 mt-3">Ce trebuie să știe o clinică.</h2>
+        <p class="mt-4 text-ink-700">Nu ați găsit răspunsul? <a class="link" href="mailto:contact@nicobot.ro">contact@nicobot.ro</a></p>
+      </div>
+      <div class="divide-y divide-line border-y border-line lg:col-span-8">
+        <details class="faq group py-5" open>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left">
+            <span class="h4">Nicobot pune diagnostice?</span>
+            <svg class="h-5 w-5 shrink-0 text-ink-500" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </summary>
+          <div class="mt-3 max-w-prose text-[15px] leading-relaxed text-ink-700">Nu. Nicobot face triaj și orientare pe baza unui protocol validat de psihologi. Diagnosticul și tratamentul rămân exclusiv ale specialistului.</div>
+        </details>
+        <details class="faq group py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left">
+            <span class="h4">Unde sunt stocate conversațiile?</span>
+            <svg class="h-5 w-5 shrink-0 text-ink-500" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </summary>
+          <div class="mt-3 max-w-prose text-[15px] leading-relaxed text-ink-700">Pe servere din Uniunea Europeană, criptate. Conversațiile nu sunt folosite pentru antrenarea modelelor și pot fi șterse la cererea pacientului.</div>
+        </details>
+        <details class="faq group py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left">
+            <span class="h4">Ce se întâmplă într-o situație de urgență?</span>
+            <svg class="h-5 w-5 shrink-0 text-ink-500" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </summary>
+          <div class="mt-3 max-w-prose text-[15px] leading-relaxed text-ink-700">Nicobot detectează semnale de risc, afișează imediat resursele de urgență (112, linii de suport) și notifică echipa clinicii conform procedurii stabilite împreună.</div>
+        </details>
+        <details class="faq group py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left">
+            <span class="h4">Cât durează instalarea?</span>
+            <svg class="h-5 w-5 shrink-0 text-ink-500" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </summary>
+          <div class="mt-3 max-w-prose text-[15px] leading-relaxed text-ink-700">O linie de cod pe site-ul clinicii — aproximativ 15 minute. Configurarea protocolului se face împreună cu echipa noastră, în prima săptămână.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 6. ICONURI -->
+<!-- ===================================================================== -->
+<section id="icons" class="border-y border-line bg-clinical py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">6 · Iconografie</p>
+    <h2 class="h2 mt-3">Lucide, inline, stroke 1.75.</h2>
+    <p class="lead mt-4 max-w-prose">Un singur set, o singură grosime. În producție se copiază path-urile inline (fără bibliotecă JS).</p>
+    <div class="mt-10 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-shield-check"/></svg><span class="text-xs text-ink-500">shield-check</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-lock"/></svg><span class="text-xs text-ink-500">lock</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-heart-pulse"/></svg><span class="text-xs text-ink-500">heart-pulse</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-message-circle"/></svg><span class="text-xs text-ink-500">message-circle</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-clock"/></svg><span class="text-xs text-ink-500">clock</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-users"/></svg><span class="text-xs text-ink-500">users</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-calendar"/></svg><span class="text-xs text-ink-500">calendar</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-check"/></svg><span class="text-xs text-ink-500">check</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-arrow-right"/></svg><span class="text-xs text-ink-500">arrow-right</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-file-text"/></svg><span class="text-xs text-ink-500">file-text</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-sparkles"/></svg><span class="text-xs text-ink-500">sparkles</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-brand" aria-hidden="true"><use href="#i-phone"/></svg><span class="text-xs text-ink-500">phone</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-ink-700" aria-hidden="true"><use href="#i-menu"/></svg><span class="text-xs text-ink-500">menu</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-ink-700" aria-hidden="true"><use href="#i-x"/></svg><span class="text-xs text-ink-500">x</span></div>
+      <div class="flex flex-col items-center gap-3 rounded-card border border-line bg-white p-5"><svg class="h-6 w-6 text-ink-700" aria-hidden="true"><use href="#i-chevron-down"/></svg><span class="text-xs text-ink-500">chevron-down</span></div>
+    </div>
+    <p class="mt-6 text-sm text-ink-500">Atribute SVG: <code class="sg">viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"</code> · mărime implicită <code class="sg">h-5 w-5</code> · în chip <code class="sg">h-11 w-11 rounded-control bg-brand-50 text-brand</code></p>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 7. FUNDALURI + 5.2 MOBILE MENU (static) -->
+<!-- ===================================================================== -->
+<section id="backgrounds" class="py-16 md:py-24">
+  <div class="mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+    <p class="sg-label">7 · Fundaluri (fără fotografii) · 5.2 · Meniu mobil</p>
+    <h2 class="h2 mt-3">Tentă radială, bare din logo, grilă discretă.</h2>
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      <div class="sg-frame">
+        <div class="bg-hero flex h-56 items-end p-5"><div><p class="text-sm font-semibold text-ink-900">.bg-hero</p><p class="text-xs text-ink-500">alb + brand 12% + sage 7%, radial</p></div></div>
+      </div>
+      <div class="sg-frame">
+        <div class="relative flex h-56 items-end bg-white p-5"><div class="absolute inset-0 bg-bars" aria-hidden="true"></div><div class="relative"><p class="text-sm font-semibold text-ink-900">.bg-bars</p><p class="text-xs text-ink-500">bare rotunjite 6×44, rază 3, din „N”-ul logo-ului, 9%, mascate radial</p></div></div>
+      </div>
+      <div class="sg-frame">
+        <div class="relative flex h-56 items-end bg-navy p-5"><div class="absolute inset-0 bg-bars-dark" aria-hidden="true"></div><div class="relative"><p class="text-sm font-semibold text-white">.bg-bars-dark</p><p class="text-xs text-navy-200">aceeași geometrie pe navy, alb 6%</p></div></div>
+      </div>
+      <div class="sg-frame">
+        <div class="relative flex h-56 items-end bg-white p-5"><div class="absolute inset-0 bg-grid-faint" aria-hidden="true"></div><div class="relative"><p class="text-sm font-semibold text-ink-900">.bg-grid-faint</p><p class="text-xs text-ink-500">grilă 1 px line la 48 px, opțională</p></div></div>
+      </div>
+      <div class="sg-frame lg:col-span-2">
+        <div class="flex items-center gap-4 bg-clinical p-5">
+          <svg class="h-10 w-[9px]" viewBox="0 0 22 70" aria-hidden="true"><rect width="22" height="70" rx="7" fill="#4361EE"/></svg>
+          <svg class="h-12 w-[42px] text-brand" aria-hidden="true"><use href="#logo-mark"/></svg>
+          <p class="text-sm text-ink-700">Motivul: bara rotunjită din marca „N” (22×70 în logo, rază 7). Patternul o repetă la scară mică, decalat pe diagonală, ca în literă. Nu se folosesc alte forme decorative.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h4 mt-14">Meniu mobil (stare deschisă, randare statică)</h3>
+    <p class="mt-2 max-w-prose text-sm text-ink-500">Live: redimensionează fereastra sub 768 px și apasă butonul din header.</p>
+    <div class="sg-frame mt-5 max-w-sm bg-white">
+      <div class="border-b border-line bg-white">
+        <div class="flex h-16 items-center justify-between px-5">
+          <svg class="h-8 w-[80px] text-brand" aria-hidden="true"><use href="#logo-full"/></svg>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-control bg-clinical text-ink-700"><svg class="h-6 w-6" aria-hidden="true"><use href="#i-x"/></svg></span>
+        </div>
+        <div class="border-t border-line bg-white">
+          <nav class="space-y-1 px-5 py-4" aria-label="Mobil (exemplu)">
+            <a href="#" class="block rounded-control bg-clinical px-3 py-2.5 text-base font-medium text-navy" aria-current="page">Acasă</a>
+            <a href="#" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Pentru clinici</a>
+            <a href="#" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Demo chat</a>
+            <a href="#" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Contact</a>
+            <a href="#" class="mt-3 flex h-11 items-center justify-center rounded-control bg-brand text-base font-semibold text-white hover:bg-brand-700">Programează o discuție</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.11 CTA BAND -->
+<!-- ===================================================================== -->
+<div class="mx-auto max-w-site px-5 pb-4 sm:px-6 lg:px-8"><p class="sg-label">5.11 · CTA band (navy)</p></div>
+<section id="cta" class="on-navy relative overflow-hidden bg-navy">
+  <div class="absolute inset-0 bg-bars-dark" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-site px-5 py-16 sm:px-6 md:py-20 lg:px-8">
+    <div class="grid items-center gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-8">
+        <p class="eyebrow text-brand-300">Discuție de 25 de minute</p>
+        <h2 class="h2 mt-3 text-white">Vedeți cum ar răspunde Nicobot pe site-ul clinicii dumneavoastră.</h2>
+        <p class="mt-4 max-w-prose text-lg text-navy-100">Fără obligații. Configurăm un demo cu regulile voastre de programare și cu echipa voastră de terapeuți.</p>
+      </div>
+      <div class="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:justify-end">
+        <a href="https://calendly.com/claudiu-nicolaa/25min" class="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-white px-6 text-base font-semibold text-navy transition-colors hover:bg-brand-50">Programează o discuție <svg class="h-4 w-4" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a href="mailto:contact@nicobot.ro" class="inline-flex h-12 items-center justify-center gap-2 rounded-control border border-navy-700 px-6 text-base font-semibold text-white transition-colors hover:bg-navy-800">contact@nicobot.ro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 5.12 FOOTER -->
+<!-- ===================================================================== -->
+<div class="mx-auto max-w-site px-5 py-4 sm:px-6 lg:px-8"><p class="sg-label">5.12 · Footer (navy)</p></div>
+<footer id="footer" class="on-navy bg-navy text-navy-100">
+  <div class="mx-auto max-w-site px-5 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <svg class="h-7 w-[70px] text-white" aria-label="Nicobot"><use href="#logo-full"/></svg>
+        <p class="mt-5 max-w-xs text-sm text-navy-200">Asistent conversațional pentru clinici și cabinete de psihoterapie. Triaj, orientare și programare, după protocolul vostru.</p>
+        <span class="mt-5 inline-flex items-center gap-1.5 rounded-full bg-navy-800 px-2.5 py-1 text-xs font-semibold text-sage-300 ring-1 ring-inset ring-navy-700"><svg class="h-3.5 w-3.5" aria-hidden="true"><use href="#i-shield-check"/></svg> Dezvoltat alături de psihologi acreditați</span>
+      </div>
+      <div class="md:col-span-2">
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-navy-200">Produs</p>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-white">Pentru clinici</a></li>
+          <li><a href="#" class="hover:text-white">Demo chat</a></li>
+          <li><a href="#" class="hover:text-white">Cum funcționează</a></li>
+          <li><a href="#" class="hover:text-white">Întrebări frecvente</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-navy-200">Companie</p>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-white">Despre</a></li>
+          <li><a href="#" class="hover:text-white">Presă</a></li>
+          <li><a href="#" class="hover:text-white">Politica de confidențialitate</a></li>
+          <li><a href="#" class="hover:text-white">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-3">
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-navy-200">Contact</p>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="mailto:contact@nicobot.ro" class="inline-flex items-center gap-2 hover:text-white"><svg class="h-4 w-4" aria-hidden="true"><use href="#i-message-circle"/></svg> contact@nicobot.ro</a></li>
+          <li><a href="https://calendly.com/claudiu-nicolaa/25min" class="inline-flex items-center gap-2 hover:text-white"><svg class="h-4 w-4" aria-hidden="true"><use href="#i-calendar"/></svg> Programează o discuție</a></li>
+          <li class="inline-flex items-center gap-2 text-navy-200"><svg class="h-4 w-4" aria-hidden="true"><use href="#i-lock"/></svg> Date stocate în UE</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col gap-3 border-t border-navy-700 pt-6 text-xs text-navy-200 sm:flex-row sm:justify-between">
+      <p>© 2026 Nicobot. Toate drepturile rezervate.</p>
+      <p>Nicobot nu este un serviciu de urgență. În caz de urgență sunați la <strong class="text-white">112</strong>.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.querySelector('[data-menu-toggle]'),m=document.querySelector('[data-menu]');
+  if(t&&m){ t.addEventListener('click',function(){
+    var open=m.classList.toggle('hidden')===false; t.setAttribute('aria-expanded',open);
+    t.querySelector('[data-icon-open]').classList.toggle('hidden',open);
+    t.querySelector('[data-icon-close]').classList.toggle('hidden',!open);
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!m.classList.contains('hidden')) t.click(); }); }
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} }); },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); }); }
+})();
+</script>
+</body>
+</html>
