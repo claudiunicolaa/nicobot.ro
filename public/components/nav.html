@@ -1,29 +1,32 @@
-<!-- navigation menu -->
-<nav class="bg-white shadow-md">
-	<div class="container mx-auto px-6 py-4">
-		<div class="flex justify-between items-center">
-			<a href="/" class="text-2xl font-bold text-indigo-600">
-				<img src="../logo/logo-2.1.svg" alt="Nicobot" class="w-42 h-12">
-			</a>
-			<div class="hidden md:flex space-x-8">
-				<a href="/" class="text-gray-600 hover:text-indigo-600 transition duration-300">Acasă</a>
-				<a href="/gen-leads" class="text-gray-600 hover:text-indigo-600 transition duration-300">Business</a>
-				<a href="/chat" class="text-gray-600 hover:text-indigo-600 transition duration-300" target="_blank">Chat</a>
-				<a href="/contact" class="text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a>
-			</div>
-			<!-- mobile menu button -->
-			<button class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
-				<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-				</svg>
-			</button>
+<!-- navigație principală (încărcată de /site.js în #nav-placeholder) -->
+<header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-[2px]">
+	<div class="mx-auto flex h-16 max-w-site items-center justify-between px-5 sm:px-6 lg:px-8">
+		<a href="/" class="flex items-center" aria-label="Nicobot — acasă">
+			<img src="/logo/logo-2.1.svg" alt="Nicobot" class="h-8 w-auto" width="80" height="32">
+		</a>
+		<nav class="hidden items-center gap-8 md:flex" aria-label="Principal">
+			<a href="/" data-nav="home" class="text-sm font-medium text-ink-700 hover:text-navy">Acasă</a>
+			<a href="/gen-leads" data-nav="cabinete" class="text-sm font-medium text-ink-700 hover:text-navy">Pentru cabinete</a>
+			<a href="/chat" target="_blank" rel="noopener" data-nav="chat" class="text-sm font-medium text-ink-700 hover:text-navy">Încearcă gratuit</a>
+			<a href="/contact" data-nav="contact" class="text-sm font-medium text-ink-700 hover:text-navy">Contact</a>
+		</nav>
+		<div class="hidden md:block">
+			<a href="https://calendly.com/claudiu-nicolaa/25min" target="_blank" rel="noopener"
+				class="inline-flex h-10 items-center gap-2 rounded-control bg-brand px-4 text-sm font-semibold text-white transition-colors hover:bg-brand-700 active:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Programați o discuție</a>
 		</div>
-		<!-- mobile menu -->
-		<div class="md:hidden hidden mt-4">
-			<a href="/" class="block py-2 text-gray-600 hover:text-indigo-600">Acasă</a>
-			<a href="/gen-leads" class="block py-2 text-gray-600 hover:text-indigo-600">Business</a>
-			<a href="/chat" class="block py-2 text-gray-600 hover:text-indigo-600">Chat</a>
-			<a href="/contact" class="block py-2 text-gray-600 hover:text-indigo-600">Contact</a>
-		</div>
+		<button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-control text-ink-700 hover:bg-clinical md:hidden" aria-controls="mobile-menu" aria-expanded="false" data-menu-toggle>
+			<span class="sr-only">Deschide meniul</span>
+			<svg data-icon-open class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+			<svg data-icon-close class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+		</button>
 	</div>
-</nav>
+	<div id="mobile-menu" class="hidden border-t border-line bg-white shadow-panel md:hidden" data-menu>
+		<nav class="mx-auto max-w-site space-y-1 px-5 py-4 sm:px-6" aria-label="Mobil">
+			<a href="/" data-nav="home" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Acasă</a>
+			<a href="/gen-leads" data-nav="cabinete" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Pentru cabinete</a>
+			<a href="/chat" target="_blank" rel="noopener" data-nav="chat" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Încearcă gratuit</a>
+			<a href="/contact" data-nav="contact" class="block rounded-control px-3 py-2.5 text-base font-medium text-ink-900 hover:bg-clinical">Contact</a>
+			<a href="https://calendly.com/claudiu-nicolaa/25min" target="_blank" rel="noopener" class="mt-3 flex h-11 items-center justify-center rounded-control bg-brand text-base font-semibold text-white hover:bg-brand-700">Programați o discuție</a>
+		</nav>
+	</div>
+</header>

@@ -4,31 +4,34 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="/logo/n.ico">
-	<title>Nicobot - Asistentul tău Digital pentru Terapie</title>
+	<title>Conversație gratuită | Nicobot</title>
+	<meta name="description" content="Încercați Nicobot gratuit, fără cont: câteva minute de conversație calmă. Nu înlocuiește terapia sau un psiholog. În situații de urgență, sunați la 112.">
+	<meta name="theme-color" content="#0F1D4A">
+	<link rel="canonical" href="https://nicobot.ro/chat">
+	<link rel="icon" type="image/x-icon" href="/logo/n-2.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 	<style>
-		/* reset default margins and padding */
-		body,
-		html {
-			margin: 0;
-			padding: 0;
-			height: 100%;
-			width: 100%;
-			overflow: hidden;
-		}
-
-		/* make iframe take full viewport */
-		iframe {
-			width: 100%;
-			height: 100%;
-			border: none;
-		}
+		html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+		body { display: flex; flex-direction: column; background: #fff; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+		.bar { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: .75rem; padding: .5rem 1rem; background: #F3F6FC; border-bottom: 1px solid #DCE3F1; color: #3A4766; font-size: .8125rem; line-height: 1.4; text-align: center; }
+		.bar a { color: #0F1D4A; font-weight: 600; text-decoration: none; }
+		.bar img { height: 20px; width: auto; display: block; }
+		.bar .long { display: inline; }
+		.bar .short { display: none; }
+		@media (max-width: 640px) { .bar .long { display: none; } .bar .short { display: inline; } }
+		iframe { flex: 1 1 auto; width: 100%; border: none; }
 	</style>
 </head>
 
 <body>
-	<iframe src="https://vorbarie.ro/nicobot?utm_source=nicobotro"
-		title="Nicobot - Asistentul tău Digital pentru Terapie"></iframe>
+	<div class="bar">
+		<a href="/" aria-label="Nicobot — acasă"><img src="/logo/logo-2.1.svg" alt="Nicobot"></a>
+		<span class="long">Conversație gratuită cu Nicobot · Nu înlocuiește terapia sau un psiholog · În situații de urgență, sunați la <a href="tel:112">112</a></span>
+		<span class="short">Nu înlocuiește terapia · Urgență: <a href="tel:112">112</a></span>
+	</div>
+	<iframe src="https://vorbarie.ro/nicobot?utm_source=nicobotro" title="Nicobot - conversație gratuită"></iframe>
 </body>
 
 </html>
