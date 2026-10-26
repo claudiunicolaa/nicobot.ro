@@ -34,7 +34,7 @@ Nav-ul și footer-ul sunt în `public/components/` și sunt încărcate de `publ
 
 ## Decizii și lucruri de confirmat de client
 
-1. **Numere de criză.** Pe site apare doar 112. Cercetarea a identificat DepreHUB 0374 456 420 (non-stop), Telefonul Copilului 116 111 și TelVerde Antisuicid 0800 801 200, dar programul lor nu a putut fi confirmat; se pot adăuga în bara de pe `/chat` și în footer după verificare.
+1. **Numere de criză.** La cererea clientului, site-ul nu afișează numere de urgență; rămâne doar formularea „Nicobot nu înlocuiește terapia sau consultul unui psiholog”. Cercetarea a identificat DepreHUB 0374 456 420, Telefonul Copilului 116 111 și TelVerde Antisuicid 0800 801 200, dacă se dorește adăugarea lor ulterior.
 2. **Date în UE.** Politica de confidențialitate menționează tehnologia OpenAI; nu afirmăm „date găzduite în UE” până nu se confirmă rezidența datelor pentru API și backend-ul api.vorbarie.ro.
 3. **Testimonial Calmly.** Singurul placeholder din copy (`[[TESTIMONIAL]]`) nu este randat; dacă se obține un citat cu nume și funcție, se adaugă în secțiunea „Pe ce se bazează încrederea”.
 4. **Logo Calmly.** Este încărcat de pe calmly.blog; dacă nu se încarcă, apare automat ca wordmark tipografic. Ideal ar fi un SVG oficial în repo.
