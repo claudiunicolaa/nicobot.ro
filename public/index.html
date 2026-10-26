@@ -4,161 +4,319 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="/logo/n.ico">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+	<title>Nicobot — Chatbot pentru cabinete de psihoterapie</title>
+	<meta name="description" content="Chatbot de suport emoțional dezvoltat alături de psihologi acreditați. Integrat pe site-ul cabinetului, disponibil oricând. Conversație gratuită.">
+	<meta property="og:site_name" content="Nicobot">
+	<meta property="og:locale" content="ro_RO">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Nicobot — Chatbot pentru cabinete de psihoterapie">
+	<meta property="og:description" content="Chatbot de suport emoțional dezvoltat alături de psihologi acreditați. Integrat pe site-ul cabinetului, disponibil oricând. Conversație gratuită.">
+	<meta property="og:url" content="https://nicobot.ro/">
+	<meta name="theme-color" content="#0F1D4A">
+	<script>document.documentElement.classList.add("js");</script>
+	<link rel="canonical" href="https://nicobot.ro/">
+	<link rel="icon" type="image/x-icon" href="/logo/n-2.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+	<link href="/styles/tailwind.css" rel="stylesheet">
 	<link href="/styles/main.css" rel="stylesheet">
-	<!-- page-specific head content -->
-	<title>Nicobot - Asistentul tău Digital pentru Terapie</title>
 </head>
 
-<body class="bg-white">
-	<!-- navigation component -->
+<body class="bg-white" data-page="home">
 	<div id="nav-placeholder"></div>
-	<script>
-		// load navigation component
-		fetch('/components/nav.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('nav-placeholder').innerHTML = data;
 
-				// initialize mobile menu functionality
-				const menuButton = document.querySelector('button.md\\:hidden');
-				const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+	<main>
 
-				menuButton.addEventListener('click', () => {
-					mobileMenu.classList.toggle('hidden');
-				});
-			});
-	</script>
-
-	<!-- Hero Section -->
-	<section class="bg-gradient-primary text-white py-32 text-center">
-		<div class="container mx-auto px-6">
-			<h1 class="text-5xl font-bold mb-6">
-				Descoperă Nicobot
-			</h1>
-			<p class="text-xl mb-6 max-w-2xl mx-auto">
-				Printr-o conversație lejeră de câteva minute, Nicobot te ajută să înțelegi mai bine ce simți, cu siguranța că
-				nu vei fi judecat sau neînțeles.
-			</p>
-			<button class="bg-white text-primary px-8 py-3 rounded font-semibold hover:bg-gray-100 transition duration-300">
-				<a href="https://nicobot.ro/chat" target="_blank">Începe o conversație gratuită</a>
-			</button>
-		</div>
-	</section>
-
-	<!-- Mission Section -->
-	<section class="py-20">
-		<div class="container mx-auto px-6 text-center">
-			<h2 class="text-3xl font-bold mb-8">Misiunea Noastră</h2>
-			<p class="text-gray-600 text-xl max-w-2xl mx-auto">
-				Utilizarea responsabilă a Inteligenței Artificiale (AI) pentru a face terapia bazată pe fundamente științifice
-				mai accesibilă.
-			</p>
-		</div>
-	</section>
-
-	<!-- Benefits B2C Section -->
-	<section class="py-20 bg-gray-50">
-		<div class="container mx-auto px-6">
-			<h2 class="text-3xl font-bold text-center mb-12">Beneficii pentru utilizatori</h2>
-			<div class="grid md:grid-cols-3 gap-8">
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-primary mb-4">Disponibil oriunde, oricând</h3>
-					<p class="text-gray-600">Nicobot este disponibil oriunde, oricând, în orice context, de pe orice
-						dispozitiv conectat la internet.</p>
+		<!-- 1. Hero -->
+		<section class="bg-hero overflow-hidden border-b border-line">
+			<div class="mx-auto grid max-w-site items-center gap-12 px-5 pt-14 pb-16 sm:px-6 md:pt-24 md:pb-28 lg:grid-cols-12 lg:gap-16 lg:px-8">
+				<div class="lg:col-span-6">
+					<p class="eyebrow">Pentru cabinete și clinici de psihoterapie</p>
+					<h1 class="h1 mt-3">Chatbot de suport emoțional, dezvoltat cu psihologi</h1>
+					<p class="lead mt-5 max-w-prose">Nicobot preia conversațiile cu vizitatorii site-ului dumneavoastră: îi ascultă fără judecată, la orice oră, și îi orientează către echipa dumneavoastră, după regulile stabilite de cabinet.</p>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a href="https://calendly.com/claudiu-nicolaa/25min" target="_blank" rel="noopener" class="inline-flex h-12 items-center justify-center gap-2 rounded-control bg-brand px-6 text-base font-semibold text-white transition-colors hover:bg-brand-700 active:bg-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">
+							Programați o discuție
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+						</a>
+						<a href="/chat" target="_blank" rel="noopener" class="inline-flex h-12 items-center justify-center gap-2 rounded-control border border-line-strong bg-white px-6 text-base font-semibold text-navy transition-colors hover:border-navy hover:bg-clinical active:bg-clinical-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Conversație gratuită</a>
+					</div>
+					<ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-500">
+						<li class="inline-flex items-center gap-2">
+							<svg class="h-4 w-4 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+							Dezvoltat alături de psihologi acreditați
+						</li>
+						<li class="inline-flex items-center gap-2">
+							<svg class="h-4 w-4 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+							Partener Calmly
+						</li>
+						<li class="inline-flex items-center gap-2">
+							<svg class="h-4 w-4 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+							Conversații confidențiale
+						</li>
+					</ul>
 				</div>
 
-				<!-- Integration Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-primary mb-4">Dezvoltat alături de psihologi</h3>
-					<p class="text-gray-600">Nicobot este dezvoltat alături de o echipă de psihologi și este în continuă
-						actualizare.</p>
-				</div>
-
-				<!-- Care Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-primary mb-4">Confidențialitate 100%</h3>
-					<p class="text-gray-600">Nicobot oferă o platformă sigură și confidențială pentru conversații sensibile.</p>
-				</div>
-			</div>
-		</div>
-		<div class="flex justify-center mt-8">
-			<button
-				class="bg-primary text-white px-8 py-3 rounded font-semibold hover:bg-secondary transition duration-300 hover-transition">
-				<a href="https://nicobot.ro/chat" target="_blank">Încearcă-l chiar acum</a>
-			</button>
-		</div>
-	</section>
-
-	<!-- Instagram Follow Section -->
-	<section class="py-20 bg-white">
-		<div id="insta-placeholder"></div>
-		<script>
-			fetch('/components/insta.html')
-				.then(response => response.text())
-				.then(data => {
-					document.getElementById('insta-placeholder').innerHTML = data;
-				});
-		</script>
-	</section>
-
-	<!-- Benefits B2B Section -->
-	<section class="py-20 bg-gray-50">
-		<div class="container mx-auto px-6">
-			<h2 class="text-3xl font-bold text-center mb-12">Beneficii pentru cabinete și clinici</h2>
-			<div class="grid md:grid-cols-3 gap-8">
-				<!-- Support Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-primary mb-4">Conexiuni Autentice</h3>
-					<p class="text-gray-600">Inițiază conversații naturale și empatice cu potențialii clienți oferind
-						suport emoțional bazat pe ultimele tehnologii.</p>
-				</div>
-
-				<!-- Integration Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-primary mb-4">Mai mulți clienți</h3>
-					<p class="text-gray-600">Ne ocupăm de conversia vizitatorilor site-ului tău în clienți prin folosirea unui
-						algoritm de potrivire (matching) între nevoile clienților și terapeuții dvs.</p>
-				</div>
-
-				<!-- Care Card -->
-				<div class="bg-white p-8 rounded-lg shadow-sm hover-transition">
-					<h3 class="text-xl font-semibold text-primary">Flexibilitate și Control</h3>
-					<p class=" text-gray-600">Tu stabilești regulile de comunicare și programare, iar noi le respectăm întocmai.
-					</p>
+				<!-- proof panel: conversație demonstrativă construită în HTML -->
+				<div class="relative isolate lg:col-span-6">
+					<div class="absolute inset-0 -z-10 bg-bars" aria-hidden="true"></div>
+					<p class="sr-only">Exemplu de conversație: un vizitator ezitant scrie seara, Nicobot îl ascultă, pune o întrebare calmă și transmite cererea echipei cabinetului.</p>
+					<div class="reveal rounded-panel border border-line bg-white shadow-panel" aria-hidden="true">
+						<div class="flex items-center gap-3 border-b border-line px-5 py-3.5">
+							<span class="h-2 w-2 rounded-full bg-sage-600"></span>
+							<span class="text-sm font-semibold text-ink-900">Nicobot · asistentul cabinetului</span>
+							<span class="ml-auto inline-flex items-center gap-1.5 rounded-full bg-sage-50 px-2.5 py-1 text-xs font-semibold text-sage-700">
+								<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+								Confidențial
+							</span>
+						</div>
+						<div class="flex flex-col gap-3 p-5">
+							<p class="text-center text-xs text-ink-400">Marți, 22:40</p>
+							<div class="bubble-user">Bună seara. Nu știu dacă e cazul să scriu… Mă gândesc de ceva vreme să vorbesc cu cineva, dar nu știu de unde să încep.</div>
+							<div class="bubble-bot">Bună seara. Mă bucur că ați scris, chiar și cu ezitare. Nu trebuie să aveți totul clar. Ce v-a adus aici în seara asta?</div>
+							<div class="bubble-user">Nu dorm bine de câteva săptămâni și mă simt obosit tot timpul. Nu știu dacă e ceva serios.</div>
+							<div class="bubble-bot">Vă mulțumesc că mi-ați spus. Nu pot stabili eu ce înseamnă, dar pot transmite echipei cabinetului ce mi-ați povestit, ca să vă contacteze în program. Doriți?</div>
+							<div class="rounded-card border border-sage-300/60 bg-sage-50 p-4">
+								<p class="text-xs font-semibold uppercase tracking-eyebrow text-sage-700">Următorul pas</p>
+								<p class="mt-1.5 flex items-center gap-2 text-sm font-semibold text-ink-900">
+									<svg class="h-4 w-4 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+									Cerere transmisă echipei cabinetului
+								</p>
+								<p class="mt-1 text-sm text-ink-700">Un terapeut din echipa dumneavoastră va răspunde în programul cabinetului.</p>
+							</div>
+						</div>
+					</div>
+					<div class="reveal mt-4 grid grid-cols-3 divide-x divide-line rounded-card border border-line bg-white [&>div]:px-3 [&>div]:py-3 sm:[&>div]:px-4" style="--reveal-i: 1">
+						<div class="text-center text-xs font-medium text-ink-700 sm:text-sm">Disponibil oricând</div>
+						<div class="text-center text-xs font-medium text-ink-700 sm:text-sm">Dezvoltat cu psihologi acreditați</div>
+						<div class="text-center text-xs font-medium text-ink-700 sm:text-sm">Conversații confidențiale</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="flex justify-center mt-8">
-			<button
-				class="bg-primary text-white px-8 py-3 rounded font-semibold hover:bg-secondary transition duration-300 hover-transition">
-				<a href="https://nicobot.ro/gen-leads">Află mai multe</a>
-			</button>
-		</div>
-	</section>
+		</section>
 
-	<!-- Press Appearances Section -->
-	<div id="press-placeholder"></div>
-	<script>
-		fetch('/components/press.html')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('press-placeholder').innerHTML = data;
-			});
-	</script>
-
-	<!-- Footer -->
-	<footer class="bg-gray-900 text-white py-8">
-		<div class="container mx-auto px-6 text-center">
-			<p class="mb-4">© 2025 Nicobot. Toate drepturile rezervate.</p>
-			<div class="space-x-6">
-				<a href="https://nicobot.ro/privacy" class="hover:text-primary">Politica de
-					confidențialitate</a>
-				<a href=" https://nicobot.ro/contact" class="hover:text-secondary">Contact</a>
+		<!-- 2. Bandă de credibilitate -->
+		<section class="border-y border-line bg-clinical">
+			<div class="mx-auto flex max-w-site flex-col items-center gap-5 px-5 py-8 sm:px-6 md:flex-row md:justify-between lg:px-8">
+				<p class="inline-flex items-center gap-2 text-sm font-medium text-ink-900">
+					<svg class="h-5 w-5 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+					Dezvoltat alături de psihologi acreditați
+				</p>
+				<ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+					<li>
+						<a href="https://calmly.ro" target="_blank" rel="noopener" class="inline-flex items-center">
+							<img src="https://calmly.blog/wp-content/uploads/2024/08/red-1.png" alt="Calmly, partener Nicobot" class="h-6 w-auto opacity-70 grayscale transition-opacity hover:opacity-100" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden class="font-display text-lg font-semibold text-ink-400">Calmly</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.zf.ro/zf-it-generation/zf-it-generation-start-up-pitch-radu-bendic-cristina-georgescu-22806068" target="_blank" rel="noopener" class="font-display text-lg font-semibold text-ink-400 transition-colors hover:text-ink-700">Ziarul Financiar</a>
+					</li>
+					<li class="inline-flex items-center gap-2 text-sm font-medium text-ink-700">
+						<svg class="h-4 w-4 text-ink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+						Conversații confidențiale
+					</li>
+				</ul>
 			</div>
-		</div>
-	</footer>
+		</section>
+
+		<!-- 3. Contextul -->
+		<section class="bg-white">
+			<div class="mx-auto max-w-site px-5 py-16 sm:px-6 md:py-24 lg:px-8">
+				<div class="mb-10 max-w-narrow md:mb-14">
+					<p class="eyebrow mb-3">Contextul</p>
+					<h2 class="h2">Primul pas este cel mai greu de făcut</h2>
+					<p class="lead mt-4 max-w-prose">Mulți oameni ajung pe site-ul unui cabinet seara, nehotărâți, și pleacă fără să scrie nimănui.</p>
+				</div>
+				<div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					<article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i: 0">
+						<div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand">
+							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+						</div>
+						<h3 class="h4 mt-5">Vizitatorii nu vin doar în program</h3>
+						<p class="mt-2 text-[15px] leading-relaxed text-ink-700">Căutările pentru sprijin se întâmplă adesea seara sau în weekend, când nimeni nu poate răspunde. Un formular gol nu reține pe nimeni.</p>
+					</article>
+					<article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i: 1">
+						<div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand">
+							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+						</div>
+						<h3 class="h4 mt-5">Un mesaj este greu de scris</h3>
+						<p class="mt-2 text-[15px] leading-relaxed text-ink-700">„Bună ziua, aș vrea o programare” presupune că persoana știe deja ce are nevoie. De cele mai multe ori nu știe încă.</p>
+					</article>
+					<article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i: 2">
+						<div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand">
+							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+						</div>
+						<h3 class="h4 mt-5">Echipa are timp limitat</h3>
+						<p class="mt-2 text-[15px] leading-relaxed text-ink-700">Fiecare conversație de clarificare ia timp din orele de terapie. Partea de primire și orientare poate fi preluată.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- 4. Ce este Nicobot -->
+		<section class="bg-clinical">
+			<div class="mx-auto max-w-site px-5 py-16 sm:px-6 md:py-24 lg:px-8">
+				<div class="mb-10 max-w-narrow md:mb-14">
+					<h2 class="h2">Un chatbot care ascultă și orientează</h2>
+					<p class="lead mt-4">Nicobot este un chatbot construit pe un model de limbaj, dezvoltat alături de o echipă de psihologi acreditați. Poartă conversații în limbaj natural, calm și fără judecată, și îndrumă vizitatorul către echipa dumneavoastră.</p>
+				</div>
+				<div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+					<article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i: 0">
+						<div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand">
+							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+						</div>
+						<h3 class="h4 mt-5">Disponibil oricând</h3>
+						<p class="mt-2 text-[15px] leading-relaxed text-ink-700">Răspunde la orice oră, de pe orice dispozitiv conectat la internet, direct pe site-ul dumneavoastră.</p>
+					</article>
+					<article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i: 1">
+						<div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand">
+							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+						</div>
+						<h3 class="h4 mt-5">Dezvoltat alături de psihologi</h3>
+						<p class="mt-2 text-[15px] leading-relaxed text-ink-700">Psihologi acreditați au oferit feedback pe parcursul dezvoltării, pentru tonul și acuratețea răspunsurilor. Nicobot este actualizat continuu.</p>
+					</article>
+					<article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i: 2">
+						<div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand">
+							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+						</div>
+						<h3 class="h4 mt-5">Orientare către echipa dumneavoastră</h3>
+						<p class="mt-2 text-[15px] leading-relaxed text-ink-700">După ce înțelege ce caută vizitatorul, Nicobot îl poate îndruma către terapeutul potrivit sau către programare, conform regulilor cabinetului.</p>
+					</article>
+					<article class="reveal group rounded-card border border-line bg-white p-6 transition-colors hover:border-line-strong md:p-7" style="--reveal-i: 3">
+						<div class="inline-flex h-11 w-11 items-center justify-center rounded-control bg-brand-50 text-brand">
+							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+						</div>
+						<h3 class="h4 mt-5">Confidențial prin construcție</h3>
+						<p class="mt-2 text-[15px] leading-relaxed text-ink-700">Mesajele sunt folosite exclusiv pentru generarea răspunsurilor. Nu sunt folosite pentru marketing, profilare sau alte scopuri.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- 5. Cum începe colaborarea -->
+		<section class="bg-white">
+			<div class="mx-auto max-w-site px-5 py-16 sm:px-6 md:py-24 lg:px-8">
+				<div class="mb-10 max-w-narrow md:mb-14">
+					<h2 class="h2">Trei pași până la implementare</h2>
+				</div>
+				<ol class="grid gap-8 md:gap-10 lg:grid-cols-3">
+					<li class="reveal relative pl-14" style="--reveal-i: 0">
+						<span class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-brand">1</span>
+						<h3 class="h4">Discuție de 20 de minute</h3>
+						<p class="mt-1.5 text-[15px] text-ink-700">Înțelegem cabinetul dumneavoastră, serviciile și modul în care primiți pacienți noi.</p>
+					</li>
+					<li class="reveal relative pl-14" style="--reveal-i: 1">
+						<span class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-brand">2</span>
+						<h3 class="h4">Plan de implementare</h3>
+						<p class="mt-1.5 text-[15px] text-ink-700">Stabilim împreună regulile de comunicare, trimiterea către terapeuți și modul de programare.</p>
+					</li>
+					<li class="reveal relative pl-14" style="--reveal-i: 2">
+						<span class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-brand">3</span>
+						<h3 class="h4">Integrare și monitorizare</h3>
+						<p class="mt-1.5 text-[15px] text-ink-700">Integrăm Nicobot pe site și urmărim împreună cum răspunde, ajustând unde este nevoie.</p>
+					</li>
+				</ol>
+				<div class="mt-10 md:mt-12">
+					<a href="/gen-leads" class="inline-flex h-11 items-center gap-2 rounded-control px-3 text-[15px] font-semibold text-brand-700 transition-colors hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 [&>svg]:transition-transform hover:[&>svg]:translate-x-0.5">
+						Vedeți detaliile pentru cabinete
+						<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- 6. Spus clar -->
+		<section class="bg-clinical">
+			<div class="mx-auto max-w-site px-5 py-16 sm:px-6 md:py-24 lg:px-8">
+				<div class="mb-10 max-w-narrow md:mb-14">
+					<h2 class="h2">Ce face și ce nu face Nicobot</h2>
+				</div>
+				<div class="grid gap-5 md:gap-6 md:grid-cols-2">
+					<article class="reveal rounded-card border border-line bg-white p-6 md:p-7" style="--reveal-i: 0">
+						<h3 class="h4">Nicobot face</h3>
+						<ul class="mt-4 space-y-3 text-[15px] leading-relaxed text-ink-700">
+							<li class="flex gap-3">
+								<svg class="mt-0.5 h-5 w-5 shrink-0 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+								<span>Poartă conversații calme, în limbaj natural, fără judecată.</span>
+							</li>
+							<li class="flex gap-3">
+								<svg class="mt-0.5 h-5 w-5 shrink-0 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+								<span>Ajută vizitatorul să pună în cuvinte ce simte și ce caută.</span>
+							</li>
+							<li class="flex gap-3">
+								<svg class="mt-0.5 h-5 w-5 shrink-0 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+								<span>Îl orientează către echipa dumneavoastră, după regulile stabilite.</span>
+							</li>
+						</ul>
+					</article>
+					<article class="reveal rounded-card border border-line bg-white p-6 md:p-7" style="--reveal-i: 1">
+						<h3 class="h4">Nicobot nu face</h3>
+						<ul class="mt-4 space-y-3 text-[15px] leading-relaxed text-ink-700">
+							<li class="flex gap-3">
+								<svg class="mt-0.5 h-5 w-5 shrink-0 text-ink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+								<span>Nu pune diagnostice și nu recomandă tratamente.</span>
+							</li>
+							<li class="flex gap-3">
+								<svg class="mt-0.5 h-5 w-5 shrink-0 text-ink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+								<span>Nu înlocuiește terapia sau consultul unui psiholog.</span>
+							</li>
+							<li class="flex gap-3">
+								<svg class="mt-0.5 h-5 w-5 shrink-0 text-ink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+								<span>Nu este un serviciu de urgență. În situații de urgență: <a href="tel:112" class="link">112</a>.</span>
+							</li>
+						</ul>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- 7. În presă -->
+		<section class="bg-white">
+			<div class="mx-auto max-w-site px-5 py-16 sm:px-6 md:py-24 lg:px-8">
+				<div class="mb-10 max-w-narrow md:mb-14">
+					<h2 class="h2">În presă</h2>
+				</div>
+				<div id="press-placeholder" data-include="/components/press.html" class="max-w-narrow"></div>
+			</div>
+		</section>
+
+		<!-- 8. Pentru persoane -->
+		<section class="border-y border-line bg-white">
+			<div class="mx-auto max-w-narrow px-5 py-16 text-center sm:px-6 md:py-24">
+				<h2 class="h2">O conversație gratuită, oricând</h2>
+				<p class="lead mt-4">Oricine poate încerca Nicobot: câteva minute de conversație calmă, fără cont și fără cost. Același chatbot pe care îl integrăm în cabinete.</p>
+				<div class="mt-8 flex justify-center">
+					<a href="/chat" target="_blank" rel="noopener" class="inline-flex h-12 items-center justify-center gap-2 rounded-control border border-line-strong bg-white px-6 text-base font-semibold text-navy transition-colors hover:border-navy hover:bg-clinical active:bg-clinical-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">Conversație gratuită</a>
+				</div>
+				<p class="mt-5 text-sm text-ink-500">Nicobot nu înlocuiește terapia sau un psiholog. În situații de urgență, sunați la <a href="tel:112" class="link">112</a>.</p>
+			</div>
+		</section>
+
+		<!-- 9. CTA final -->
+		<section class="on-navy relative isolate overflow-hidden bg-navy">
+			<div class="absolute inset-0 -z-10 bg-bars-dark" aria-hidden="true"></div>
+			<div class="mx-auto max-w-site px-5 py-16 sm:px-6 md:py-20 lg:px-8">
+				<div class="grid items-center gap-8 lg:grid-cols-12">
+					<div class="lg:col-span-7">
+						<h2 class="font-display text-3xl font-semibold leading-[1.15] tracking-[-0.015em] text-white md:text-[2.5rem] md:leading-[1.1]">Douăzeci de minute, fără obligații</h2>
+						<p class="mt-4 max-w-prose text-lg text-navy-100">Discutăm despre cabinetul dumneavoastră, vă arătăm cum răspunde Nicobot și stabilim împreună dacă are sens o implementare.</p>
+					</div>
+					<div class="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
+						<a href="https://calendly.com/claudiu-nicolaa/25min" target="_blank" rel="noopener" class="inline-flex h-12 whitespace-nowrap items-center justify-center gap-2 rounded-control bg-white px-6 text-base font-semibold text-navy transition-colors hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-navy">
+							Programați o discuție
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+						</a>
+						<a href="mailto:contact@nicobot.ro" class="inline-flex h-12 whitespace-nowrap items-center justify-center gap-2 rounded-control border border-navy-700 px-6 text-base font-semibold text-white transition-colors hover:bg-navy-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-navy"><span class="sr-only">Sau scrieți-ne la </span>contact@nicobot.ro</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<div id="footer-placeholder"></div>
+	<script src="/site.js" defer></script>
 </body>
 
 </html>

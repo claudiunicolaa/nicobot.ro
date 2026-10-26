@@ -19,6 +19,7 @@ body {
 h1, h2, h3, .font-display { font-family: var(--font-display); font-optical-sizing: auto; }
 h1, h2, h3, h4 { color: var(--navy); text-wrap: balance; }
 h4 { color: var(--ink-900); }
+.on-navy h1, .on-navy h2, .on-navy h3, .on-navy h4, .on-navy .h1, .on-navy .h2, .on-navy .h3, .on-navy .h4 { color: #fff; }
 p { text-wrap: pretty; }
 strong { font-weight: 600; color: var(--ink-900); }
 ::selection { background: #DCE4FB; color: var(--navy); }
@@ -66,7 +67,7 @@ img, svg { display: block; }
           mask-image: radial-gradient(60% 90% at 100% 50%, #000 10%, transparent 75%);
 }
 .bg-grid-faint {
-  background-image: linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-image: linear-gradient(to right, #EAF0F9 1px, transparent 1px), linear-gradient(to bottom, #EAF0F9 1px, transparent 1px);
   background-size: 48px 48px;
   -webkit-mask-image: radial-gradient(80% 80% at 50% 0%, #000 30%, transparent 90%);
           mask-image: radial-gradient(80% 80% at 50% 0%, #000 30%, transparent 90%);
@@ -88,10 +89,10 @@ details.faq summary:focus-visible { outline: 2px solid var(--brand); outline-off
 #nav-placeholder { min-height: 4rem; }
 
 /* ---------- motion ---------- */
-.reveal { opacity: 0; transform: translateY(8px); transition: opacity .5s ease-out, transform .5s ease-out; transition-delay: calc(var(--reveal-i, 0) * 60ms); }
-.reveal.is-visible { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(8px); transition: opacity .5s ease-out, transform .5s ease-out; transition-delay: calc(var(--reveal-i, 0) * 60ms); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }

@@ -1,5 +1,7 @@
 // Încarcă navigația și footerul comune, inițializează meniul mobil și animația de reveal.
 (function () {
+	document.documentElement.classList.add('js');
+
 	function load(id, url, after) {
 		var el = document.getElementById(id);
 		if (!el) return;
